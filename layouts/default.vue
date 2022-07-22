@@ -11,39 +11,33 @@
       height="100%"
       elevation="0"
     >
-      <v-list nav subheader tile class="mt-0 pa-0 py-1">
-        <v-list-item class="list-item ma-0" v-if="!showback" to="/">
-          <v-list-item-icon class="ml-1 mr-2">
-            <v-icon medium color="primary">mdi-panorama-wide-angle</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title color="primary" class="font-weight-normal">{{
-            $t("label.menu.overview")
-          }}</v-list-item-title>
-        </v-list-item>
+      <v-list nav subheader tile class="mt-0 pa-0 py-0">
+        <v-card
+          elevation="0"
+          color="primary"
+          class="mx-auto"
+          min-height="150"
+          tile
+        >
+          <v-list-item color="rgba(0, 0, 0, .4)" dark>
+            <v-list-item-content class="mt-8">
+              <v-list-item-title class="text-h6">
+                <v-avatar color="primary darken-2" size="62">
+                  <span class="white--text text-h5">{{
+                    username.charAt(0)
+                  }}</span></v-avatar
+                >
+              </v-list-item-title>
+              <v-list-item-subtitle class="font-weight-bold white--text">{{
+                username
+              }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
 
         <div v-for="(setting, index) in settings" :key="index">
-          <v-list-item
-            class="list-item ma-0"
-            v-if="index == 0 && showback"
-            @click="navigateBack"
-          >
-            <v-list-item-icon class="ml-1 mr-2">
-              <v-icon medium color="primary">mdi-keyboard-backspace</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title color="primary" class="font-weight-normal"
-              >Back to main menu</v-list-item-title
-            >
-          </v-list-item>
-          <v-list-item
-            v-esle
-            v-if="hasPermission(setting.permissions)"
-            v-on:click="navigateToHere(setting.to)"
-          >
-            <v-list-item-title
-              :class="
-                !showback ? `font-weight-light ` : ` font-weight-light ml-5`
-              "
-            >
+          <v-list-item :to="setting.to">
+            <v-list-item-title class="font-weight-light">
               <v-icon
                 slot="prependIcon"
                 v-html="setting.icon"
@@ -52,80 +46,26 @@
                 color=" primary"
                 class="ml-1 mr-2"
               ></v-icon>
-              {{ $t(setting.title) }}</v-list-item-title
-            >
+              {{ $t(setting.title) }}
+              <v-divider v-if="index == 6" class="mt-5"></v-divider>
+            </v-list-item-title>
           </v-list-item>
         </div>
       </v-list>
-      <template v-slot:append>
-        <v-select
-          v-model="select"
-          :items="locales"
-          item-text="locale"
-          item-value="lang"
-          persistent-hint
-          return-object
-          single-line
-          dense
-          class="font-weight-light ma-2"
-          @change="changeLanguage(select.lang)"
-        ></v-select>
-        <iframe
-          src="https://github.com/sponsors/ospic/button"
-          title="Sponsor ospic"
-          height="30"
-          width="216"
-          style="border: 0"
-        ></iframe>
-      </template>
     </v-navigation-drawer>
     <v-app-bar clipped-left hide-on-scroll dense fixed app flat color="primary">
       <v-toolbar-title>
-        <v-avatar color="primary lighten-1" size="36">
+        <v-avatar color="primary " size="36">
           <span
             class="white--text font-weight-bold overline"
             @click.stop="drawer = !drawer"
           >
-            <v-icon small color="white">mdi-text</v-icon>
+            <v-icon small color="white">mdi-menu</v-icon>
           </span>
         </v-avatar>
-        &nbsp;&nbsp;
-        <span class="hidden-sm-and-down font-weight-bold default--text"
-          >Hospital Management System</span
-        >
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-      <!--<v-badge class="mr-3" icon="mdi-lock" color="blue" bottom overlap>
-        <template v-slot:badge> 10 </template>
-        <v-btn fab small class="primary" elevation="0" to="/notifications">
-          <v-icon medium color="white">mdi-bell</v-icon></v-btn
-        >
-      </v-badge>-->
-
-      <v-tooltip bottom color="primary" open-on-hover open-delay="500">
-        <template v-slot:activator="{ on }">
-          <v-btn
-            fab
-            v-if="$vuetify.breakpoint.mdAndUp"
-            v-on="on"
-            @click.stop="syncro()"
-            small
-            elevation="0"
-            class="primary mr-1"
-            dark
-          >
-            <v-icon v-on="on" v-if="sync" medium>mdi-progress-clock</v-icon>
-            <v-icon v-else medium>mdi-progress-check</v-icon>
-          </v-btn>
-        </template>
-
-        <span v-if="sync" color="white">{{
-          $t("label.tooltip.progresssynchronising")
-        }}</span>
-        <span v-else color="white">{{ $t("label.tooltip.synchronise") }}</span>
-      </v-tooltip>
 
       <v-menu
         max-width="500"
@@ -142,7 +82,7 @@
             overlap
           >
             <v-icon v-bind="attrs" v-on="on" color="white" medium>
-              mdi-bell-outline
+              mdi-bell
             </v-icon>
           </v-badge>
         </template>
@@ -160,18 +100,18 @@
               <v-list-item class="ma-0 pl-0" :key="i">
                 <v-list-item-content>
                   <v-list-item-title class="blue--text">{{
-                    notifications[i]
+                    notifications[i].title
                   }}</v-list-item-title>
                   <v-list-item-subtitle class="font-weight-normal text-caption">
                     <span
                       class="d-inline-block text-truncate"
                       style="max-width: 350px"
                     >
-                      {{ notifications[i] }}
+                      {{ notifications[i].message }}
                     </span>
                     <br />
                     <span class="d-inline-block blue--text text-caption">{{
-                      notifications[i]
+                      notifications[i].createdAt
                     }}</span>
                   </v-list-item-subtitle>
                 </v-list-item-content>
@@ -184,46 +124,6 @@
           </v-list-item>
         </v-list>
       </v-menu>
-
-      <div class="ma-0 pa-0">
-        <v-list-item class="ma-0 pa-0" dense dark>
-          <v-list-item-avatar :key="image" color="primary lighten-2">
-            <v-img :src="profileImage" class="pa-2"></v-img>
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title
-              v-html="'Username'"
-              class="font-weight-black"
-            ></v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-menu offset-y tile content-class="elevation-1 mt-2">
-              <template v-slot:activator="{ on, attrs }">
-                <v-icon v-bind="attrs" v-on="on">mdi-menu-down</v-icon>
-              </template>
-              <v-list tile>
-                <v-list-item
-                  ripple
-                  v-for="(item, index) in menus"
-                  :key="index"
-                  @click="selectionAction(item)"
-                >
-                  <v-list-item-icon>
-                    <v-avatar color="primary" size="24">
-                      <v-icon small dark v-text="item.icon"></v-icon>
-                    </v-avatar>
-                  </v-list-item-icon>
-
-                  <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </v-list-item-action>
-        </v-list-item>
-      </div>
     </v-app-bar>
 
     <v-main>
@@ -242,16 +142,12 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-footer class="primary" fixed padless app>
-      <v-btn color="whitish" text to="/about" x-small> Made by Ospic </v-btn>
-    </v-footer>
+  
   </v-app>
 </template>
 
 <script>
 import Vue from "vue";
-import Vuex from "vuex";
-Vue.use(Vuex);
 import { mapGetters } from "vuex";
 export default {
   async fetch({ store, params }) {
@@ -273,72 +169,79 @@ export default {
       zIndex: 0,
       showback: false,
       menulist: 0,
+      username: "Abasi Abasi Mwinyi Mkuu",
       image: 0,
-      notificationnumber:8,
-      notifications:[
-        {'title': 'Notification title',
-        'message':"Message"},
-        {'title': 'Notification title',
-        'message':"Message"},
-        {'title': 'Notification title',
-         'message':"Message"}
-        ],
+      notifications: [
+        {
+          title: "Notification title",
+          message: "Message",
+          createdAt: "12th June 2022",
+        },
+      ],
 
       titles: {
         title: "Ospic",
       },
       settings: [
         {
-          title: "label.menu.patients",
-          icon: "mdi-account-group",
-          to: "/patients",
-          permissions:
-            "ALL_FUNCTIONS, CREATE_PATIENT, UPDATE_PATIENT, DELETE_PATIENT, DELETE_PATIENT",
+          title: "label.menu.home",
+          icon: "mdi-home",
+          to: "/",
         },
         {
-          title: "label.menu.inventoryandstock",
-          icon: "mdi-rhombus-outline",
-          permissions: "ALL_FUNCTIONS",
-          to: "/inventory",
+          title: "label.menu.accounts",
+          icon: "mdi-wallet",
+          to: "/accounts",
         },
         {
-          title: "label.menu.medicalservices",
-          icon: "mdi-square-rounded",
-          to: "/services",
-          permissions: "ALL_FUNCTIONS",
+          title: "label.menu.recenttransactions",
+          icon: "mdi-label",
+          to: "/transactions",
         },
         {
-          title: "label.menu.organization",
-          icon: "mdi-tooltip",
-          to: "/staffs",
-          permissions: "ALL_FUNCTIONS",
+          title: "label.menu.charges",
+          icon: "mdi-currency-rub",
+          to: "/charges",
         },
         {
-          title: "label.menu.finance",
+          title: "label.menu.calculator",
           icon: "mdi-wallet-plus",
-          to: "/finance",
-          permissions:
-            "ALL_FUNCTIONS, CREATE_BILL, READ_BILL,UPDATE_BILL,DELETE_BILL",
+          to: "/calculator",
         },
         {
-          title: "label.menu.calendar",
-          icon: "mdi-calendar-month",
-          to: "/calendar",
-
-          permissions: "ALL_FUNCTIONS",
+          title: "label.menu.thridpartytransfer",
+          icon: "mdi-swap-horizontal",
+          to: "/transfer",
         },
         {
-          title: "label.menu.reports",
-          icon: "mdi-chart-box",
-          to: "/reports",
-
-          permissions: "ALL_FUNCTIONS",
+          title: "label.menu.beneficiaries",
+          icon: "mdi-account-supervisor",
+          to: "/beneficiaries",
         },
         {
           title: "label.menu.settings",
           icon: "mdi-cog",
           to: "/settings",
-          permissions: "ALL_FUNCTIONS",
+        },
+        {
+          title: "label.menu.about",
+          icon: "mdi-information",
+          to: "/about",
+        },
+        {
+          title: "label.menu.help",
+          icon: "mdi-help-rhombus",
+          to: "/help",
+        },
+        {
+          title: "label.menu.share",
+          icon: "mdi-share-variant",
+          to: "/share",
+        },
+        {
+          title: "label.menu.logout",
+          icon: "mdi-logout",
+          to: "/logout",
         },
       ],
       actions: [
@@ -422,43 +325,6 @@ export default {
     },
     navigateToHere(id) {
       console.log(id);
-      this.$router.push(id);
-      if (id == "/") {
-        this.settings = this.settings;
-        this.showback = true;
-      }
-      if (id == "/patients") {
-        this.settings = this.menuoptions.patients;
-        this.showback = true;
-      }
-      if (id == "/inventory") {
-        this.settings = this.menuoptions.inventory;
-        this.showback = true;
-      }
-      if (id == "/services") {
-        this.settings = this.menuoptions.services;
-        this.showback = true;
-      }
-      if (id == "/finance") {
-        this.settings = this.menuoptions.finance;
-        this.showback = true;
-      }
-      if (id == "/staffs") {
-        this.settings = this.menuoptions.organization;
-        this.showback = true;
-      }
-      if (id == "/calendar") {
-        this.settings = this.menuoptions.calendar;
-        this.showback = true;
-      }
-      if (id == "/reports") {
-        this.settings = this.menuoptions.reports;
-        this.showback = true;
-      }
-      if (id == "/settings") {
-        this.settings = this.menuoptions.settings;
-        this.showback = true;
-      }
     },
     toggle(mode) {
       if (`${mode}` === "true") {
@@ -483,9 +349,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-    }),
-   
+    ...mapGetters({}),
+    notificationnumber() {
+      return this.notifications.length;
+    },
   },
 };
 </script>

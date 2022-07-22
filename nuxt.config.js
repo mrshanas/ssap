@@ -11,7 +11,7 @@ export default {
     mode: 'hash',
     base: routerBase,
     routerNameSplitter: "/",
-    middleware: ['router']
+   // middleware: ['router']
   },
   loadingIndicator: {
     name: 'pulse',

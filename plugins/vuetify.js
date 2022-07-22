@@ -23,7 +23,7 @@ export default (ctx) => {
           dlue: "#1520A6",
         },
         light: {
-          primary: '#2CB673',
+          primary: '#a0d18c',
           accent: '#000000',
           secondary: '#ffffff',
           success: '#4CAF50',

@@ -34,7 +34,7 @@ export default {
 
   },
   created() {
-    this.$store.dispatch("retrieve_profile");
+    //this.$store.dispatch("retrieve_profile");
   },
 };
 </script>

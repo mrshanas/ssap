@@ -1,18 +1,19 @@
 <template>
-  <v-container class="fill-height" fluid>
+  <v-container class="transparent fill-height" fluid>
     <v-row align="center" class="justify-center" justify="center" no-gutters>
+     
       <v-col cols="12" class="d-flex justify-space-around">
         <v-flex xs6 class="d-flex align-center justify-end flex-column">
           <div class="font-weight-black">
             Made by
-            <a href="https://github.com/ospic" target="_blank">Ospic </a>
-            as an open source Hospital management system
+            <a href="https://github.com/ospic" target="_blank">Singo Africa </a>
+            as a web application for
             <a
               style="color: blue; text-decoration: underline"
-              href="https://app.ospicx.com/"
+              href="https://amala.co.tz/products/amala-yangu/"
               target="_blank"
-              >Ospic HMS</a
-            >
+              >Amala yangu</a
+            > self service application
             Copyright &copy; {{ new Date().getFullYear() }} The Apache Software
             Foundation, Licensed under the
             <a
