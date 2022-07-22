@@ -12,7 +12,7 @@
                   </h4></v-list-item-title
                 >
                 <v-list-item-subtitle class="mt-4">
-                  <p>26 Mwai Kibaki Rd, Dar es Salaam, Tanzania</p>
+                  <p>Magomeni Watumishi House, Dar es Salaam.</p>
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -26,9 +26,9 @@
                   </h4></v-list-item-title
                 >
                 <v-list-item-subtitle class="mt-4">
-                  <p>Reception : +255 739 087 522</p>
+                  <p>Reception : +255 766 521 258</p>
 
-                  <p>Office : +255 739 087 522</p>
+                  <p>Office : +255 766 521 258</p>
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -42,14 +42,14 @@
                   </h4></v-list-item-title
                 >
                 <v-list-item-subtitle class="mt-4">
-                  <p>Office : ospicinfo@gmail.com</p>
+                  <p>Office : info@singo.africa</p>
                   <p>
                     Site :
                     <a
                       target="_blank"
                       class="link"
-                      href="https://app.ospicx.com/"
-                      >app.ospicx.com</a
+                      href="https://amala.co.tz/"
+                      >amala.co.tz</a
                     >
                   </p>
                 </v-list-item-subtitle>
@@ -98,8 +98,8 @@
           <v-col cols="12" md="2">
             <p>
               All Rights Reserved by
-              <a target="_blank" class="link" href="https://app.ospicx.com/"
-                >app.ospicx.com</a
+              <a target="_blank" class="link" href="https://singo.africa"
+                >Singo Africa</a
               >
             </p>
           </v-col>
@@ -107,14 +107,12 @@
           <v-col cols="12" md="6"> </v-col>
           <v-col cols="12" md="4">
             <p>
-              <a target="_blank" class="link" href="http://docs.ospicx.com/"
-                >Documentation
-              </a>
-              <a target="_blank" class="link mx-2" href="/#">Terms of Use </a>
-              <a target="_blank" class="link mx-2" href="/#"
+            
+              <a  class="link mx-2" href="/#">Terms of Use </a>
+              <a  class="link mx-2" href="/#"
                 >Legal Disclaimer
               </a>
-              <a target="_blank" class="link" href="/#"> Privacy Policy</a>
+              <a target="_blank" class="link" href="https://amala.co.tz/2019/03/19/amala-yangu-mobile-application-privacy-policy/"> Privacy Policy</a>
             </p>
           </v-col>
         </v-row>
@@ -131,11 +129,11 @@ export default {
       socials: [
         {
           icon: "mdi-twitter",
-          link: "https://twitter.com/ospicapp?ref_src=twsrc%5Etfw",
+          link: "https://twitter.com/amalaApp",
         },
-        { icon: "mdi-linkedin", link: null },
-        { icon: "mdi-facebook", link: null },
-        { icon: "mdi-instagram", link: null },
+        { icon: "mdi-linkedin", link: "https://www.linkedin.com/company/amala-core-banking/" },
+        { icon: "mdi-facebook", link: "https://web.facebook.com/AmalaCoreBanking" },
+        { icon: "mdi-instagram", link: "https://www.instagram.com/amala_core_banking/" },
       ],
     };
   },
