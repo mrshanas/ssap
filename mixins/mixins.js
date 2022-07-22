@@ -1,13 +1,7 @@
 import Vue from 'vue';
-import ChargesTemplate from "@/components/consultation/tabs/charges"
-import PDFViewer from "@/components/PdfViewer.vue"
 import { mapGetters } from "vuex";
 Vue.mixin({
-  components: {
-    "charges-template": ChargesTemplate,
-    "v-pdf": PDFViewer,
 
-  },
   layout: 'default',
   data: function () {
 
@@ -394,9 +388,6 @@ Vue.mixin({
       return this.profileimage == null ? this.thumbnil : this.filebaseUri + this.profileimage;
     },
     ...mapGetters({
-      servicetypes: "servicetypes",
-      measures: "medicinemeasurements",
-      profileimage: "profileimage"
     }),
 
 
