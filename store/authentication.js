@@ -31,24 +31,24 @@ const mutations = {
   },
   ["GET_CLIENT_SUCCESS"](state, payload) {
     state.showLoader = false;
-    state.client = payload;
+    state.client = payload.pageItems[0];
     this.$router.push('/');
   },
 
 }
 const actions = {
-  async _authenticate({ commit }, requestbody) {
+  async _authenticate({ commit,dispatch }, requestbody) {
     commit("AUTHENTICATE");
     await this.$api.$post('authentication', requestbody)
       .then(response => {
         commit("AUTHENTICATE_SUCCESS", response);
-        dispatch("_selfserviceclient")
+        dispatch("selfserviceclient",null,{root: true})
       }).catch(error => {
         console.log(error);
         commit("AUTHENTICATE_ERROR");
       });
   },
-  async _selfserviceclient({ commit }) {
+  async selfserviceclient({ commit }) {
     commit("GET_CLIENT");
     await this.$api.$get('clients')
       .then(response => {
@@ -72,7 +72,7 @@ const getters = {
     return state.profile.base64EncodedAuthenticationKey;
   },
   clientId:function(state){
-    return state.profile.userId;
+    return state.client.id;
   },
   isAuthhenticated: function (state) {
     return state.profile.base64EncodedAuthenticationKey != null;

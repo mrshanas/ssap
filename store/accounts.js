@@ -1,6 +1,6 @@
 const state = () => ({
   showLoader: Boolean,
-  account:{}
+  accounts:{}
 });
 
 const mutations = {
@@ -36,7 +36,9 @@ const actions = {
 
 }
 const getters = {
-
+  savingaccounts: function(state){
+    return state.accounts.
+  }
 }
 
 export default {
