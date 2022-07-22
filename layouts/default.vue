@@ -160,18 +160,18 @@
               <v-list-item class="ma-0 pl-0" :key="i">
                 <v-list-item-content>
                   <v-list-item-title class="blue--text">{{
-                    notifications[i].title
+                    notifications[i]
                   }}</v-list-item-title>
                   <v-list-item-subtitle class="font-weight-normal text-caption">
                     <span
                       class="d-inline-block text-truncate"
                       style="max-width: 350px"
                     >
-                      {{ notifications[i].message }}
+                      {{ notifications[i] }}
                     </span>
                     <br />
                     <span class="d-inline-block blue--text text-caption">{{
-                      notifications[i].createdAt
+                      notifications[i]
                     }}</span>
                   </v-list-item-subtitle>
                 </v-list-item-content>
@@ -193,7 +193,7 @@
 
           <v-list-item-content>
             <v-list-item-title
-              v-html="user.username"
+              v-html="'Username'"
               class="font-weight-black"
             ></v-list-item-title>
           </v-list-item-content>
@@ -274,6 +274,15 @@ export default {
       showback: false,
       menulist: 0,
       image: 0,
+      notificationnumber:8,
+      notifications:[
+        {'title': 'Notification title',
+        'message':"Message"},
+        {'title': 'Notification title',
+        'message':"Message"},
+        {'title': 'Notification title',
+         'message':"Message"}
+        ],
 
       titles: {
         title: "Ospic",
@@ -379,7 +388,7 @@ export default {
     this.$nextTick(function () {
       window.setInterval(() => {
         console.log("Notifications");
-        this.$store.dispatch("_getnewnotifications");
+        //this.$store.dispatch("_getnewnotifications");
       }, 20000);
     });
   },
@@ -465,20 +474,6 @@ export default {
           "url(https://cdn.hipwallpaper.com/i/50/79/MSsZP2.jpg)";
       }
     },
-
-    syncro: async function () {
-      const vm = this;
-      vm.sync = !vm.sync;
-      await Promise.all([
-        vm.$store.dispatch("retrievepatients"),
-        vm.$store.dispatch("retrievephysicians"),
-      ]).then(function () {
-        console.log("Loading complete...");
-      });
-      setTimeout(() => {
-        vm.sync = !vm.sync;
-      }, 2000);
-    },
     changeLanguage(lang) {
       this.$i18n.locale = lang;
     },
@@ -489,15 +484,8 @@ export default {
 
   computed: {
     ...mapGetters({
-      notificationnumber: "notificationsize",
-      notifications: "newnotifications",
     }),
-    user() {
-      return this.$store.getters.profile;
-    },
-    profileImage() {
-      return this.$api.defaults.baseURL + "auth/" + this.user.id + "/images";
-    },
+   
   },
 };
 </script>
