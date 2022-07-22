@@ -7,7 +7,7 @@
       overlay-color="primary"
       app
       clipped
-      width="220"
+      width="270"
       height="100%"
       elevation="0"
     >
