@@ -1,0 +1,69 @@
+@mixin color_red {
+  color: red;
+}
+
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+}
+
+tr:nth-child(odd) {
+  background: #eaeaea;
+
+  &.strikeout {
+    @include color_red;
+
+    a {
+      @include color_red;
+    }
+  }
+}
+
+tr:nth-child(even) {
+  background: white;
+
+  &.strikeout {
+    @include color_red;
+
+    a {
+      @include color_red;
+    }
+  }
+}
+
+tr.strikeout {
+  td {
+
+    font-size: 10px !important;
+    position: relative;
+
+    &:not(:last-child) {
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        border-bottom: 2px solid red;
+        width: 100%;
+      }
+
+      &:after {
+        content: "\00B7";
+        font-size: 1px;
+      }
+    }
+  }
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: $color_primary;
+  font-weight: b;
+  color: white;
+
+  span {
+    color: white;
+  }
+}
