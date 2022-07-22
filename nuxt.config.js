@@ -15,7 +15,7 @@ export default {
   },
   loadingIndicator: {
     name: 'pulse',
-    color: ' #00A756',
+    color: ' #A0D18C',
     background: '#FAFAFA'
   },
   /**
@@ -26,28 +26,28 @@ export default {
   },
   **/
   env: {
-    baseUrl: 'https://api.ospicx.com/api/',
-    localUrl: 'http://localhost:8080/api/'
+    baseUrl: 'https://demo.amalastaging.co.tz/apache-fineract/api/v1/self/',
+    localUrl: 'https://localhost:8443/apache-fineract/api/v1/self/'
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: 'Ospic',
-    title: 'Ospic-HMS',
+    titleTemplate: 'Amala',
+    title: 'Amala Yangu',
     meta: [
       ...meta,
       { charset: 'utf-8' },
       /**Chrome, Firefox OS and Opera **/
-      { name: "theme-color", content: "#00A756" },
+      { name: "theme-color", content: "#A0D18C" },
       /**Windows phone **/
-      { name: "msapplication-navbutton-color", content: "#00A756" },
+      { name: "msapplication-navbutton-color", content: "#A0D18C" },
       /**iOS Safari**/
-      { name: "apple-mobile-web-app-status-bar-style", content: "#00A756" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "#A0D18C" },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
-      { hid: 'description', name: 'description', content: 'Open source Hospital Management System' },
+      { hid: 'description', name: 'description', content: 'Amala Yangu self-service Web Application' },
       { name: "google-site-verification", content: "cx99OlrotJDjh6FbXnZFs4lRdaqQ7ksY-SadPjv2CLQ" },
       //Twitter meta-data
-      { hid: "twitter:site", name: "twitter:site", content: "ospicapp" },
+      { hid: "twitter:site", name: "twitter:site", content: "AmalaApp" },
       { hid: "twitter:card", name: "twitter:card", content: "summary_large_image" },
       { hid: "twitter:image:alt", name: "twitter:image:alt", content: "Ospic application" },
 
@@ -127,8 +127,8 @@ export default {
   },
   pwa: {
     manifest: {
-      name: 'Ospic Hospital Management System',
-      short_name: 'Ospic Hms',
+      name: 'Amala Yangu Web Application',
+      short_name: 'Amala Yangu',
       color_theme: "#2F4454",
       background_color: "#2F4454",
       lang: 'en',
@@ -136,14 +136,14 @@ export default {
     },
     meta: {
       /* meta options */
-      name: "Ospic Hospital Management System",
-      author: "Ospic",
-      description: "Open source Hospital Management System",
+      name: "Amala Yangu Web Application",
+      author: "Amala",
+      description: "Amala Yangu self-service Web Application",
       lang: "en",
       ogType: "website",
-      ogSiteName: "Ospic Hms",
-      ogTitle: "Ospic Hospital Management system",
-      ogDescription: "Open source Hospital Management System",
+      ogSiteName: "Amala Yangu",
+      ogTitle: "Amala Yangu Web Application",
+      ogDescription: "Amala Yangu self-service Web Application",
       ogHost: "https://app.ospicx.com/",
       ogImage: "https://docs.ospicx.com/preview.png",
       ogUrl: "",
