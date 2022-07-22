@@ -1,9 +1,9 @@
 <template>
   <v-container class="ma-0 pa-0" fluid>
-    <v-card elevation="0" color="primary" class="mx-auto" min-height="120" tile>
+    <v-card elevation="0" color="primary darken-1" class="mx-auto" min-height="120" tile>
       <v-list-item three-line class="pt-5" color="rgba(0, 0, 0, .4)" dark>
         <v-list-item-icon class="pa-0">
-          <v-avatar color="primary  lighten-1" size="62">
+          <v-avatar color="primary" size="62">
             <span class="white--text text-h4">{{
               username.charAt(0)
             }}</span></v-avatar
@@ -74,7 +74,7 @@
         </div>
       </v-col>
     </v-row>
-    <v-card elevation="0" color="primary" class="py-5 mt-3" tile>
+    <v-card elevation="0" color="primary darken-1" class="py-5 mt-3" tile>
       <v-row no-gutters>
         <v-col class="d-flex justify-center mb-2 white--text" cols="12"
           >Manage Accounts</v-col
@@ -82,7 +82,7 @@
         <v-col   cols="4" class="ma-0 pa-0">
           <v-row no-gutters class="d-flex justify-center" >
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary lighten-1">
+              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary ">
                 <v-icon dark> mdi-bank </v-icon>
               </v-btn>
               <p class="mt-2 white--text">Accounts</p>
@@ -93,7 +93,7 @@
             <v-col   cols="4" class="ma-0 pa-0">
           <v-row no-gutters class="d-flex justify-center" >
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary lighten-1">
+              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary ">
                 <v-icon dark> mdi-swap-horizontal </v-icon>
               </v-btn>
               <p class="mt-2 white--text">Transfer</p>
@@ -104,7 +104,7 @@
             <v-col  cols="4" class="ma-0 pa-0">
           <v-row no-gutters class="d-flex justify-center" >
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary lighten-1">
+              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary ">
                 <v-icon dark> mdi-draw-pen </v-icon>
               </v-btn>
               <p class="mt-2 white--text">Apply for Loan</p>
@@ -134,9 +134,9 @@
           <v-row no-gutters class="d-flex justify-center" >
             <v-col class="d-flex flex-column align-center">
               <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="white">
-                <v-icon dark> mdi-swap-horizontal </v-icon>
+                <v-icon dark> mdi-wallet </v-icon>
               </v-btn>
-              <p class="mt-2 ">Transfer</p>
+              <p class="mt-2 ">Charges</p>
             </v-col>
             <v-divider vertical color="white" dark inset ></v-divider>
           </v-row>
@@ -145,9 +145,9 @@
           <v-row no-gutters class="d-flex justify-center" >
             <v-col class="d-flex flex-column align-center">
               <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="white">
-                <v-icon dark> mdi-draw-pen </v-icon>
+                <v-icon dark> mdi-clipboard-text </v-icon>
               </v-btn>
-              <p class="mt-2 ">Apply for Loan</p>
+              <p class="mt-2 ">Surveys</p>
             </v-col>
             <v-divider vertical color="white" dark inset ></v-divider>
           </v-row>

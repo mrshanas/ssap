@@ -36,7 +36,7 @@
         </v-card>
 
         <div v-for="(setting, index) in settings" :key="index">
-          <v-list-item :to="setting.to">
+          <v-list-item  @click="navigateToHere(setting.to)">
             <v-list-item-title class="font-weight-light">
               <v-icon
                 slot="prependIcon"
@@ -304,7 +304,7 @@ export default {
       this.drawer = !this.drawer;
     },
     logoutsession: function () {
-      this.$store.dispatch("_clear_local_storage_and_sign_out");
+      this.$store.dispatch("_logoutsession");
       this.drawer = !this.drawer;
     },
     changemode: function () {
@@ -316,7 +316,11 @@ export default {
       this.showback = false;
     },
     navigateToHere(id) {
-      console.log(id);
+      if(id === "/logout"){
+        this.logoutsession();
+      }else{
+        this.$router.push(id)
+      }
     },
     toggle(mode) {
       if (`${mode}` === "true") {

@@ -42,12 +42,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
   export default {
     data () {
       return {
         tab: null,
          }
     },
+    created(){
+      console.log(this.clientId);
+      this.$store.dispatch("_getaccounts", this.clientId);
+    }
   };
 </script>
 <style>

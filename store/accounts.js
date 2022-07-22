@@ -1,0 +1,48 @@
+const state = () => ({
+  showLoader: Boolean,
+  account:{}
+});
+
+const mutations = {
+
+  ["GET_ACCOUNTS"](state) {
+    state.showLoader = true;
+  },
+  ["GET_ACCOUNTS_FAILED"](state) {
+    state.showLoader = false;
+  },
+  ["GET_ACCOUNTS_ERROR"](state) {
+    state.showLoader = false;
+  },
+  ["GET_ACCOUNTS_SUCCESS"](state, payload) {
+    state.showLoader = false;
+    state.accounts = payload;
+  },
+}
+
+const actions = {
+
+  async _getaccounts({ commit }, clientId) {
+    commit("GET_ACCOUNTS");
+    await this.$api.$get(`clients/${clientId}/accounts`)
+      .then(response => {
+        commit("GET_ACCOUNTS_SUCCESS", response);
+      }).catch(error => {
+        commit("GET_ACCOUNTS_ERROR");
+        console.log(error);
+
+      });
+  }
+
+}
+const getters = {
+
+}
+
+export default {
+  namespaced: false,
+  state,
+  mutations,
+  actions,
+  getters
+}

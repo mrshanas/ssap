@@ -388,6 +388,7 @@ Vue.mixin({
       return this.profileimage == null ? this.thumbnil : this.filebaseUri + this.profileimage;
     },
     ...mapGetters({
+      clientId: "clientId"
     }),
 
 

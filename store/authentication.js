@@ -1,6 +1,7 @@
 const state = () => ({
   showLoader: Boolean,
-  profile:{}
+  profile:{},
+  client:null
 
 });
 
@@ -19,24 +20,63 @@ const mutations = {
     state.profile = payload;
   },
 
+  ["GET_CLIENT"](state) {
+    state.showLoader = true;
+  },
+  ["GET_CLIENT_FAILED"](state) {
+    state.showLoader = false;
+  },
+  ["GET_CLIENT_ERROR"](state) {
+    state.showLoader = false;
+  },
+  ["GET_CLIENT_SUCCESS"](state, payload) {
+    state.showLoader = false;
+    state.client = payload;
+    this.$router.push('/');
+  },
+
 }
 const actions = {
   async _authenticate({ commit }, requestbody) {
     commit("AUTHENTICATE");
-    await this.$api.$get('authentication', requestbody)
+    await this.$api.$post('authentication', requestbody)
       .then(response => {
         commit("AUTHENTICATE_SUCCESS", response);
+        dispatch("_selfserviceclient")
       }).catch(error => {
-        commit("AUTHENTICATE_ERROR");
         console.log(error);
+        commit("AUTHENTICATE_ERROR");
+      });
+  },
+  async _selfserviceclient({ commit }) {
+    commit("GET_CLIENT");
+    await this.$api.$get('clients')
+      .then(response => {
+        commit("GET_CLIENT_SUCCESS", response);
+      }).catch(error => {
+        console.log(error);
+        commit("GET_CLIENT_ERROR");
       });
 
   },
 
-  async logout({ commit }) {},
+  async _logoutsession({ commit }) {
+    window.localStorage.clear();
+    localStorage.removeItem('*');
+    sessionStorage.clear();
+    this.$router.push('/signin');
+  },
 }
 const getters = {
-  
+  accessToken: function (state) {
+    return state.profile.base64EncodedAuthenticationKey;
+  },
+  clientId:function(state){
+    return state.profile.userId;
+  },
+  isAuthhenticated: function (state) {
+    return state.profile.base64EncodedAuthenticationKey != null;
+  },
 }
 
 export default {
