@@ -1,5 +1,5 @@
 const open = require('opn');
-const routerBase = process.env.DEPLOY_ENV === 'prod' ? '/webapp/' : '/';
+const routerBase = process.env.DEPLOY_ENV === 'prod' ? '/ssap/' : '/';
 import metajs from './plugins/meta';
 const meta = metajs();
 export default {
