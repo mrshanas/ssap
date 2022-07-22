@@ -53,7 +53,7 @@
         </div>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar clipped-left hide-on-scroll dense fixed app flat color="primary">
+    <v-app-bar clipped-left hide-on-scroll  fixed app  color="primary lighten-1">
       <v-toolbar-title>
         <v-avatar color="primary " size="36">
           <span
@@ -126,19 +126,11 @@
       </v-menu>
     </v-app-bar>
 
-    <v-main>
+    <v-main >
       <v-container
-        style="background-color: transparent"
-        class="ma-0 mt-5 pa-0 mx-2"
-        fluid
-      >
-        <v-alert v-if="!domain" dense color="green lighten-1" type="info">
-          This application is no longer supported in this domain. It has being
-          moved to
-          <a style="color: blue" href="https://app.ospicx.com"
-            >app.ospicx.com</a
-          >
-        </v-alert>
+        style="background-color: white"
+        class="ma-0  pa-0"
+        fluid>
         <nuxt />
       </v-container>
     </v-main>
@@ -185,7 +177,7 @@ export default {
       settings: [
         {
           title: "label.menu.home",
-          icon: "mdi-home",
+          icon: "mdi-bank",
           to: "/",
         },
         {
