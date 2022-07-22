@@ -27,7 +27,7 @@ export default {
   **/
   env: {
     baseUrl: 'https://demo.amalastaging.co.tz/apache-fineract/api/v1/self/',
-    localUrl: 'https://localhost:8443/apache-fineract/api/v1/self/'
+    localUrl: 'https://demo.amalastaging.co.tz/apache-fineract/api/v1/self/'
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
