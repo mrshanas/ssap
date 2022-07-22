@@ -13,12 +13,8 @@
 
     <v-tabs-items v-model="tab">
       <v-tab-item>
-        <v-card
-          color="basil"
-          flat
-        >
-          <v-card-text>SAVING</v-card-text>
-        </v-card>
+        <tab-savingaccounts :saviingaccounts="savingaccounts"></tab-savingaccounts>
+         
       </v-tab-item>
       <v-tab-item>
         <v-card
@@ -42,8 +38,12 @@
 </template>
 
 <script>
+import SavingAccountTab from "@/components/accounts/savings.vue"
 import { mapGetters } from "vuex";
   export default {
+    components:{
+      "tab-savingaccounts": SavingAccountTab
+    },
     data () {
       return {
         tab: null,
@@ -52,6 +52,11 @@ import { mapGetters } from "vuex";
     created(){
       console.log(this.clientId);
       this.$store.dispatch("_getaccounts", this.clientId);
+    },
+    computed:{
+    ...mapGetters({
+       savingaccounts: "savingaccounts"
+    }),
     }
   };
 </script>

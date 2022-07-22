@@ -21,7 +21,6 @@ const mutations = {
 }
 
 const actions = {
-
   async _getaccounts({ commit }, clientId) {
     commit("GET_ACCOUNTS");
     await this.$api.$get(`clients/${clientId}/accounts`)
@@ -37,7 +36,16 @@ const actions = {
 }
 const getters = {
   savingaccounts: function(state){
-    return state.accounts.
+    return state.accounts.savingsAccounts;
+  },
+  loanaccounts: function(state){
+    return state.accounts.loanAccounts;
+  },
+  guaratoraccounts:function(state){
+    return state.accounts.guaratorAccounts;
+  },
+  shareaccounts: function(state){
+    return state.accounts.shareAccounts;
   }
 }
 
