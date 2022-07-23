@@ -28,7 +28,7 @@
           </v-list-item>
           <v-list-item dense two-line class="py-0 my-0">
             <v-list-item-content>
-              <v-list-item-title>Account NUmber</v-list-item-title>
+              <v-list-item-title>Account Number</v-list-item-title>
               <v-list-item-subtitle class="text-body-2 font-weight-normal mt-1">
                 {{ account.accountNo }}
               </v-list-item-subtitle>

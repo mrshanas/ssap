@@ -35,6 +35,10 @@
         v-if="this.$route.params.type == 'loan'"
         :account="account"
       ></view-loan-account>
+      <view-share-account
+        v-if="this.$route.params.type == 'share'"
+        :account="account"
+      ></view-share-account>
     </v-container>
   </v-card>
 </template>
@@ -42,11 +46,13 @@
 <script>
 import ViewSavingPage from "@/components/accounts/view_saving.vue";
 import ViewLoanAccount from "@/components/accounts/view_loan.vue";
+import ViewShareAccount from "@/components/accounts/view_share.vue";
 export default {
   layout: "views",
   components: {
     "saving-account-view": ViewSavingPage,
     "view-loan-account": ViewLoanAccount,
+    "view-share-account": ViewShareAccount,
   },
   data() {
     return {
