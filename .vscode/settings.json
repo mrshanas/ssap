@@ -1,0 +1,29 @@
+{
+  "python.pythonPath": "/usr/bin/python3",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.firebase": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  // Always include all words from the current document.
+  "javascript.suggest.alwaysAllWords": true,
+  // Complete functions with their parameter signature.
+  "javascript.suggest.completeFunctionCalls": true,
+  "jshint.options": {
+    "esversion": 8
+  },
+  "files.autoSave": "onFocusChange",
+  "files.autoSaveDelay": 10
+}
