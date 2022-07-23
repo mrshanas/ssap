@@ -114,8 +114,8 @@ export default {
     },
   },
  beforeMount() {
-    console.log(this.$store.getters.isLoggedIn);
-    if (this.$store.getters.isLoggedIn) {
+    console.log(this.$store.getters.isAuthenticated);
+    if (this.$store.getters.isAuthenticated) {
       this.$router.push("/");
     }
   }

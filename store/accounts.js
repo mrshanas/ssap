@@ -1,6 +1,9 @@
 const state = () => ({
   showLoader: Boolean,
-  accounts:{}
+  savingsAccounts: [],
+  guaratorAccounts: [],
+  shareAccounts: [],
+  loanAccounts: []
 });
 
 const mutations = {
@@ -16,7 +19,10 @@ const mutations = {
   },
   ["GET_ACCOUNTS_SUCCESS"](state, payload) {
     state.showLoader = false;
-    state.accounts = payload;
+    state.loanAccounts = payload.loanAccounts;
+    state.savingsAccounts = payload.savingsAccounts;
+    state.shareAccounts = payload.shareAccounts;
+    state.guaratorAccounts = payload.guaratorAccounts;
   },
 }
 
@@ -29,23 +35,22 @@ const actions = {
       }).catch(error => {
         commit("GET_ACCOUNTS_ERROR");
         console.log(error);
-
       });
   }
 
 }
 const getters = {
-  savingaccounts: function(state){
-    return state.accounts.savingsAccounts;
+  savingaccounts: function (state) {
+    return state.savingsAccounts;
   },
-  loanaccounts: function(state){
-    return state.accounts.loanAccounts;
+  loanaccounts: function (state) {
+    return state.loanAccounts;
   },
-  guaratoraccounts:function(state){
-    return state.accounts.guaratorAccounts;
+  guaratoraccounts: function (state) {
+    return state.guaratorAccounts;
   },
-  shareaccounts: function(state){
-    return state.accounts.shareAccounts;
+  shareaccounts: function (state) {
+    return state.shareAccounts;
   }
 }
 

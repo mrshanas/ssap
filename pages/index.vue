@@ -1,17 +1,29 @@
 <template>
   <v-container class="ma-0 pa-0" fluid>
-    <v-card elevation="0" color="primary darken-1" class="mx-auto" min-height="120" tile>
-      <v-list-item three-line class="pt-5" color="rgba(0, 0, 0, .4)" dark>
+    <v-card
+      elevation="0"
+      color="primary darken-1"
+      class="mx-auto"
+      min-height="120"
+      tile
+    >
+      <v-list-item
+        v-if="profile"
+        three-line
+        class="pt-5"
+        color="rgba(0, 0, 0, .4)"
+        dark
+      >
         <v-list-item-icon class="pa-0">
           <v-avatar color="primary" size="62">
             <span class="white--text text-h4">{{
-              username.charAt(0)
+              profile.displayName.charAt(0)
             }}</span></v-avatar
           >
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-subtitle class="white--text"
-            >Hello, {{ username }}</v-list-item-subtitle
+            >Hello, {{ profile.displayName }}</v-list-item-subtitle
           >
         </v-list-item-content>
       </v-list-item>
@@ -79,77 +91,117 @@
         <v-col class="d-flex justify-center mb-2 white--text" cols="12"
           >Manage Accounts</v-col
         >
-        <v-col   cols="4" class="ma-0 pa-0">
-          <v-row no-gutters class="d-flex justify-center" >
+        <v-col cols="4" class="ma-0 pa-0">
+          <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary ">
+              <v-btn
+                class="mb-0 mt-4"
+                to="/accounts"
+                x-large
+                fab
+                elevation="1"
+                color="primary "
+              >
                 <v-icon dark> mdi-bank </v-icon>
               </v-btn>
               <p class="mt-2 white--text">Accounts</p>
             </v-col>
-            <v-divider vertical color="white" dark inset ></v-divider>
+            <v-divider vertical color="white" dark inset></v-divider>
           </v-row>
         </v-col>
-            <v-col   cols="4" class="ma-0 pa-0">
-          <v-row no-gutters class="d-flex justify-center" >
+        <v-col cols="4" class="ma-0 pa-0">
+          <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary ">
+              <v-btn
+                class="mb-0 mt-4"
+                to="/accounts"
+                x-large
+                fab
+                elevation="1"
+                color="primary "
+              >
                 <v-icon dark> mdi-swap-horizontal </v-icon>
               </v-btn>
               <p class="mt-2 white--text">Transfer</p>
             </v-col>
-            <v-divider vertical color="white" dark inset ></v-divider>
+            <v-divider vertical color="white" dark inset></v-divider>
           </v-row>
         </v-col>
-            <v-col  cols="4" class="ma-0 pa-0">
-          <v-row no-gutters class="d-flex justify-center" >
+        <v-col cols="4" class="ma-0 pa-0">
+          <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="primary ">
+              <v-btn
+                class="mb-0 mt-4"
+                to="/accounts"
+                x-large
+                fab
+                elevation="1"
+                color="primary "
+              >
                 <v-icon dark> mdi-draw-pen </v-icon>
               </v-btn>
               <p class="mt-2 white--text">Apply for Loan</p>
             </v-col>
-            <v-divider vertical color="white" dark inset ></v-divider>
+            <v-divider vertical color="white" dark inset></v-divider>
           </v-row>
         </v-col>
       </v-row>
     </v-card>
-    <v-card elevation="0" color="blue-grey lighten-4"  class="py-5 mt-0" tile>
-      <v-row no-gutters >
-        <v-col class="d-flex justify-center mb-2" cols="12"
-          >More</v-col
-        >
-        <v-col   cols="4" class="ma-0 pa-0">
-          <v-row no-gutters class="d-flex justify-center" >
+    <v-card elevation="0" color="blue-grey lighten-4" class="py-5 mt-0" tile>
+      <v-row no-gutters>
+        <v-col class="d-flex justify-center mb-2" cols="12">More</v-col>
+        <v-col cols="4" class="ma-0 pa-0">
+          <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/beneficiaries" x-large fab elevation="1"  color="white">
+              <v-btn
+                class="mb-0 mt-4"
+                to="/beneficiaries"
+                x-large
+                fab
+                elevation="1"
+                color="white"
+              >
                 <v-icon dark> mdi-account-supervisor </v-icon>
               </v-btn>
-              <p class="mt-2 ">Beneficiaries</p>
+              <p class="mt-2">Beneficiaries</p>
             </v-col>
-            <v-divider vertical color="white" dark inset ></v-divider>
+            <v-divider vertical color="white" dark inset></v-divider>
           </v-row>
         </v-col>
-            <v-col   cols="4" class="ma-0 pa-0">
-          <v-row no-gutters class="d-flex justify-center" >
+        <v-col cols="4" class="ma-0 pa-0">
+          <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="white">
+              <v-btn
+                class="mb-0 mt-4"
+                to="/accounts"
+                x-large
+                fab
+                elevation="1"
+                color="white"
+              >
                 <v-icon dark> mdi-wallet </v-icon>
               </v-btn>
-              <p class="mt-2 ">Charges</p>
+              <p class="mt-2">Charges</p>
             </v-col>
-            <v-divider vertical color="white" dark inset ></v-divider>
+            <v-divider vertical color="white" dark inset></v-divider>
           </v-row>
         </v-col>
-            <v-col  cols="4" class="ma-0 pa-0">
-          <v-row no-gutters class="d-flex justify-center" >
+        <v-col cols="4" class="ma-0 pa-0">
+          <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn class=" mb-0 mt-4" to="/accounts" x-large fab elevation="1"  color="white">
+              <v-btn
+                class="mb-0 mt-4"
+                to="/accounts"
+                x-large
+                fab
+                elevation="1"
+                color="white"
+              >
                 <v-icon dark> mdi-clipboard-text </v-icon>
               </v-btn>
-              <p class="mt-2 ">Surveys</p>
+              <p class="mt-2">Surveys</p>
             </v-col>
-            <v-divider vertical color="white" dark inset ></v-divider>
+            <v-divider vertical color="white" dark inset></v-divider>
           </v-row>
         </v-col>
       </v-row>
@@ -167,18 +219,26 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  components: {},
-  data: () => ({
-    username: "Abasi Abasi Mwinyimkuu",
-    accountvisible: true,
-  }),
+  data() {
+    return {
+      username: "Abasi Abasi Mwinyimkuu",
+      accountvisible: true,
+    };
+  },
   methods: {},
-  mounted: function () {},
+  mounted: function () {
+    if (!this.authenticated) {
+      this.$store.dispatch("_logoutsession");
+    }
+  },
 
   created() {},
 
   computed: {
-    ...mapGetters({}),
+    ...mapGetters({
+      authenticated: "isAuthenticated",
+      profile: "client",
+    }),
   },
   created() {
     //this.$store.dispatch("retrieve_profile");

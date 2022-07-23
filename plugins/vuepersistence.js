@@ -6,7 +6,7 @@ export default ({ store }) => {
   window.onNuxtReady(() => {
     createPersistedState({
       paths: [
-        "authentication","accounts", 'notifications',],
+        "authentication", "accounts"],
       /**storage: {
         getItem: key => ls.get(key),
         setItem: (key, value) => ls.set(key, value),

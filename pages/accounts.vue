@@ -1,41 +1,171 @@
 <template>
-  <v-container class="fill-height pa-0" fluid>
-    <v-tabs v-model="tab" background-color="primary" color="basil" grow>
-      <v-tab class="font-weight-bold text-subtitle-1">SAVINGS</v-tab>
-      <v-tab class="font-weight-bold text-subtitle-1">LOAN</v-tab>
-      <v-tab class="font-weight-bold text-subtitle-1">SHARES</v-tab>
-    </v-tabs>
+  <v-card flat tile>
+    <v-toolbar color="primary" dark flat>
+      <v-toolbar-title>Accounts</v-toolbar-title>
 
-    <v-tabs-items style="width: 100% !important" v-model="tab">
-      <v-tab-item style="width: 100% !important">
-        <tab-savingaccounts
-          :savingaccounts="savingaccounts"
-        ></tab-savingaccounts>
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+
+      <template v-slot:extension>
+        <v-tabs grow v-model="tab" align-with-title>
+          <v-tabs-slider color="blue"></v-tabs-slider>
+
+          <v-tab v-for="item in items" :key="item">
+            {{ item }}
+          </v-tab>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+
+    <v-tabs-items v-model="tab">
+      <v-tab-item>
+        <v-card flat>
+          <v-container>
+            <v-list two-line class="mt-0 pt-0">
+              <v-list-item-group active-class="pink--text">
+                <div v-for="(account, index) in savingaccounts" :key="index">
+                  <v-list-item>
+                    <template v-slot:default="{ active }">
+                      <v-list-item-avatar
+                        max-width="1"
+                        :color="account.status.active ? 'primary' : 'yellow'"
+                        size="10"
+                      >
+                      </v-list-item-avatar>
+
+                      <v-list-item-content>
+                        <v-list-item-title
+                          v-html="account.accountNo"
+                        ></v-list-item-title>
+                        <v-list-item-subtitle
+                          v-html="account.productName"
+                        ></v-list-item-subtitle>
+                      </v-list-item-content>
+                      <v-list-item-action v-if="account.accountBalance">
+                        <p
+                          :class="
+                            active
+                              ? 'text--red text-subtitl-1'
+                              : 'primary--text text-h6'
+                          "
+                        >
+                          {{ account.currency.code }}
+                          {{ account.accountBalance }}
+                        </p>
+                      </v-list-item-action>
+                    </template>
+                  </v-list-item>
+                  <v-divider :key="index"></v-divider>
+                </div>
+              </v-list-item-group>
+            </v-list>
+          </v-container>
+        </v-card>
       </v-tab-item>
-      <v-tab-item style="width: 100% !important">
-        <tab-loanaccounts :loanaccounts="loanaccounts"></tab-loanaccounts>
+      <v-tab-item>
+        <v-card flat>
+          <v-container>
+            <v-list two-line class="mt-0 pt-0">
+              <v-list-item-group active-class="pink--text">
+                <div v-for="(account, index) in loanaccounts" :key="index">
+                  <v-list-item :key="index + account.accountNo">
+                    <template v-slot:default="{ active }">
+                      <v-list-item-avatar
+                        max-width="1"
+                        :color="account.status.active ? 'primary' : 'yellow'"
+                        size="10"
+                      >
+                      </v-list-item-avatar>
+
+                      <v-list-item-content>
+                        <v-list-item-title
+                          v-html="account.accountNo"
+                        ></v-list-item-title>
+                        <v-list-item-subtitle
+                          v-html="account.productName"
+                        ></v-list-item-subtitle>
+                      </v-list-item-content>
+                      <v-list-item-action v-if="account.loanBalance">
+                        <p
+                          :class="
+                            active
+                              ? 'text--red text-subtitl-1'
+                              : 'primary--text text-h6'
+                          "
+                        >
+                          {{ account.loanBalance }}
+                        </p>
+                      </v-list-item-action>
+                    </template>
+                  </v-list-item>
+                  <v-divider :key="index"></v-divider>
+                </div>
+              </v-list-item-group>
+            </v-list>
+          </v-container>
+        </v-card>
       </v-tab-item>
-      <v-tab-item style="width: 100% !important">
-        <tab-shareccounts :shareaccounts="shareaccounts"></tab-shareccounts>
+      <v-tab-item>
+        <v-card flat>
+          <v-container>
+            <v-list two-line class="mt-0 pt-0">
+              <v-list-item-group active-class="pink--text">
+                <div v-for="(account, index) in shareaccounts" :key="index">
+                  <v-list-item :key="account.accountNo">
+                    <template v-slot:default="{ active }">
+                      <v-list-item-avatar
+                        max-width="1"
+                        :color="account.status.active ? 'primary' : 'yellow'"
+                        size="10"
+                      >
+                      </v-list-item-avatar>
+
+                      <v-list-item-content>
+                        <v-list-item-title
+                          v-html="account.accountNo"
+                        ></v-list-item-title>
+                        <v-list-item-subtitle
+                          v-html="account.productName"
+                        ></v-list-item-subtitle>
+                      </v-list-item-content>
+                      <v-list-item-action v-if="account.totalApprovedShares">
+                        <p
+                          :class="
+                            active
+                              ? 'text--red text-subtitl-1'
+                              : 'primary--text '
+                          "
+                        >
+                          Approved {{ account.totalApprovedShares }}
+                        </p>
+                      </v-list-item-action>
+                    </template>
+                  </v-list-item>
+                  <v-divider :key="index"></v-divider>
+                </div>
+              </v-list-item-group>
+            </v-list>
+          </v-container>
+        </v-card>
       </v-tab-item>
     </v-tabs-items>
-  </v-container>
+  </v-card>
 </template>
-
 <script>
-import SavingAccountTab from "@/components/accounts/savings.vue";
-import LoanAccountTab from "@/components/accounts/loans.vue";
-import SharesAccountTab from "@/components/accounts/shares.vue";
 import { mapGetters } from "vuex";
 export default {
-  components: {
-    "tab-savingaccounts": SavingAccountTab,
-    "tab-loanaccounts": LoanAccountTab,
-    "tab-shareccounts": SharesAccountTab,
-  },
   data() {
     return {
       tab: null,
+      items: ["Savings", "Loan", "Share"],
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     };
   },
   created() {
@@ -51,4 +181,3 @@ export default {
   },
 };
 </script>
-

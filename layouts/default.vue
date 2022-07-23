@@ -36,7 +36,7 @@
         </v-card>
 
         <div v-for="(setting, index) in settings" :key="index">
-          <v-list-item  @click="navigateToHere(setting.to)">
+          <v-list-item :to="setting.to">
             <v-list-item-title class="font-weight-light">
               <v-icon
                 slot="prependIcon"
@@ -53,7 +53,7 @@
         </div>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar clipped-left hide-on-scroll flat  fixed app  color="primary">
+    <v-app-bar clipped-left hide-on-scroll flat fixed app color="primary">
       <v-toolbar-title>
         <v-avatar color="primary " size="36">
           <span
@@ -126,20 +126,15 @@
       </v-menu>
     </v-app-bar>
 
-    <v-main >
-      <v-container
-        style="background-color: white"
-        class="ma-0  pa-0"
-        fluid>
+    <v-main>
+      <v-container style="background-color: white" class="ma-0 pa-0" fluid>
         <nuxt />
       </v-container>
     </v-main>
-  
   </v-app>
 </template>
 
 <script>
-import Vue from "vue";
 import { mapGetters } from "vuex";
 export default {
   async fetch({ store, params }) {
@@ -316,10 +311,10 @@ export default {
       this.showback = false;
     },
     navigateToHere(id) {
-      if(id === "/logout"){
+      if (id === "/logout") {
         this.logoutsession();
-      }else{
-        this.$router.push(id)
+      } else {
+        this.$router.push(id);
       }
     },
     toggle(mode) {

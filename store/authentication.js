@@ -1,7 +1,7 @@
 const state = () => ({
   showLoader: Boolean,
   profile: {},
-  client: null
+  client: {}
 
 });
 
@@ -73,6 +73,9 @@ const getters = {
   },
   clientId: function (state) {
     return state.client.id;
+  },
+  client: function (state) {
+    return state.client;
   },
   isAuthenticated: function (state) {
     return state.profile ? state.profile.base64EncodedAuthenticationKey != null : false;
