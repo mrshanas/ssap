@@ -31,16 +31,22 @@
         v-if="this.$route.params.type == 'saving'"
         :account="account"
       ></saving-account-view>
+      <view-loan-account
+        v-if="this.$route.params.type == 'loan'"
+        :account="account"
+      ></view-loan-account>
     </v-container>
   </v-card>
 </template>
 
 <script>
 import ViewSavingPage from "@/components/accounts/view_saving.vue";
+import ViewLoanAccount from "@/components/accounts/view_loan.vue";
 export default {
   layout: "views",
   components: {
     "saving-account-view": ViewSavingPage,
+    "view-loan-account": ViewLoanAccount,
   },
   data() {
     return {

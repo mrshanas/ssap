@@ -24,12 +24,12 @@
               <v-list-item-title class="text-h6">
                 <v-avatar color="primary darken-2" size="62">
                   <span class="white--text text-h5">{{
-                    username.charAt(0)
+                    profile.displayName.charAt(0)
                   }}</span></v-avatar
                 >
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-bold white--text">{{
-                username
+                profile.displayName
               }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -340,7 +340,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters({}),
+    ...mapGetters({
+      profile: "client",
+    }),
     notificationnumber() {
       return this.notifications.length;
     },
