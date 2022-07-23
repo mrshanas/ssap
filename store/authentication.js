@@ -1,7 +1,7 @@
 const state = () => ({
   showLoader: Boolean,
-  profile:{},
-  client:null
+  profile: {},
+  client: null
 
 });
 
@@ -37,12 +37,12 @@ const mutations = {
 
 }
 const actions = {
-  async _authenticate({ commit,dispatch }, requestbody) {
+  async _authenticate({ commit, dispatch }, requestbody) {
     commit("AUTHENTICATE");
     await this.$api.$post('authentication', requestbody)
       .then(response => {
         commit("AUTHENTICATE_SUCCESS", response);
-        dispatch("selfserviceclient",null,{root: true})
+        dispatch("selfserviceclient", null, { root: true })
       }).catch(error => {
         console.log(error);
         commit("AUTHENTICATE_ERROR");
@@ -69,13 +69,13 @@ const actions = {
 }
 const getters = {
   accessToken: function (state) {
-    return state.profile.base64EncodedAuthenticationKey;
+    return state.profile ? state.profile.base64EncodedAuthenticationKey : null;
   },
-  clientId:function(state){
+  clientId: function (state) {
     return state.client.id;
   },
-  isAuthhenticated: function (state) {
-    return state.profile.base64EncodedAuthenticationKey != null;
+  isAuthenticated: function (state) {
+    return state.profile ? state.profile.base64EncodedAuthenticationKey != null : false;
   },
 }
 

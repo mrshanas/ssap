@@ -11,7 +11,7 @@ export default {
     mode: 'hash',
     base: routerBase,
     routerNameSplitter: "/",
-   // middleware: ['router']
+    middleware: ['router']
   },
   loadingIndicator: {
     name: 'pulse',
@@ -67,15 +67,10 @@ export default {
     "~/plugins/i18n.js",
     '~/plugins/vuetify.js',
     '~/plugins/axios',
-    '~/plugins/authaxios',
     '~/plugins/pwa.client.js',
-    '~/plugins/vue-apexcharts.js',
     '~/mixins/mixins.js',
-    '~/plugins/vuepersistence.js',
-    { src: '~plugins/ga.js', mode: 'client' },
-    /*
-    { src: '~/plugins/localStorage.js', ssr: false }
-    */
+    '~/plugins/vuepersistence.js'
+
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
