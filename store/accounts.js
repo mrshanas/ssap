@@ -36,7 +36,7 @@ const actions = {
         commit("GET_ACCOUNTS_ERROR");
         console.log(error);
       });
-  }
+  },
 
 }
 const getters = {

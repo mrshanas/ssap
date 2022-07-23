@@ -1,10 +1,9 @@
 <template>
   <v-container class="fill-height">
     <v-row align="center" justify="center" class="fill-height">
-        <p>Under development</p>
+      <p>Under development</p>
     </v-row>
-</v-container>
-
+  </v-container>
 </template>
 
 <script>
