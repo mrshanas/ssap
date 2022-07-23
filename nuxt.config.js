@@ -84,7 +84,6 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/toast',
-    '@nuxtjs/sitemap',
     'nuxt-material-design-icons',
     ['cookie-universal-nuxt', { parseJSON: false }],
   ],
