@@ -21,9 +21,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.5",
-    "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/toast": "^3.3.1",
     "bulma": "^0.9.4",
     "cookie-universal-nuxt": "^2.2.1",
@@ -31,7 +29,6 @@
     "fibers": "^5.0.1",
     "nuxt": "^2.12.2",
     "nuxt-material-design-icons": "^1.0.4",
-    "opn": "^6.0.0",
     "secure-ls": "^1.2.6",
     "sweetalert": "^2.1.2",
     "vue-i18n": "^8.26.5",

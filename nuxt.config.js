@@ -1,4 +1,3 @@
-const open = require('opn');
 const routerBase = process.env.DEPLOY_ENV === 'prod' ? '/ssap/' : '/';
 import metajs from './plugins/meta';
 const meta = metajs();
@@ -18,13 +17,7 @@ export default {
     color: ' #A0D18C',
     background: '#FAFAFA'
   },
-  /**
-  hooks: {
-    listen(server, { host, port }) {
-      open(`http://${host}:${port}`)
-    }
-  },
-  **/
+
   env: {
     baseUrl: 'https://demo.amala.app/fineract-provider/api/v1/self/',
     localUrl: 'https://localhost:8443/fineract-provider/api/v1/self/'
@@ -152,22 +145,6 @@ export default {
     }
   },
 
-  /**Sitemap file */
-  sitemap: {
-    hostname: 'https://app.ospicx.com',
-    gzip: false,
-    defaults: {
-      changefreq: 'daily',
-      priority: 1,
-      lastmod: new Date()
-    },
-    filter({ routes }) {
-      return routes.map(route => {
-        route.url = `#/${route.url}`
-        return route
-      })
-    }
-  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
