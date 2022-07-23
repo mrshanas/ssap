@@ -60,6 +60,7 @@ export default {
     "~/plugins/i18n.js",
     '~/plugins/vuetify.js',
     '~/plugins/axios',
+    '~/plugins/filters.js',
     '~/plugins/pwa.client.js',
     '~/mixins/mixins.js',
     '~/plugins/vuepersistence.js'
