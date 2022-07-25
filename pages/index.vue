@@ -16,7 +16,7 @@
       >
         <v-list-item-icon class="pa-0">
           <v-avatar color="primary" size="62">
-            <span class="white--text text-h4">{{
+            <span v-if="profile.displayName" class="white--text text-h4">{{
               profile.displayName.charAt(0)
             }}</span></v-avatar
           >

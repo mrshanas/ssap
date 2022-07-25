@@ -15,6 +15,7 @@
         <v-card
           elevation="0"
           color="primary"
+           v-if="profile"
           class="mx-auto"
           min-height="150"
           tile
@@ -23,7 +24,7 @@
             <v-list-item-content class="mt-8">
               <v-list-item-title class="text-h6">
                 <v-avatar color="primary darken-2" size="62">
-                  <span class="white--text text-h5">{{
+                  <span v-if="profile.displayName" class="white--text text-h5">{{
                     profile.displayName.charAt(0)
                   }}</span></v-avatar
                 >
