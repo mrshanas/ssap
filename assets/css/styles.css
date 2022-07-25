@@ -90,7 +90,7 @@ main {
   background-size: cover;
   -webkit-box-shadow: inset 0 0 0 1000px rgba(63, 203, 98, 0);
   box-shadow: inset 0 0 0 1000px rgba(63, 203, 98, 0);
-  zoom: 90%;
+  zoom: 80%;
 }
 
 main.v-main.default {
@@ -106,7 +106,7 @@ main.v-main.login {
 }
 
 .v-application--wrap {
-  background: yellow;
+  background: transparent;
   background-image: url("https://vicsguide.com/wp-content/uploads/2021/07/Best-loan-apps.jpg");
   height: 70%;
   background-repeat: no-repeat;
