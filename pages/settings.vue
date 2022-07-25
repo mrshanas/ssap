@@ -82,6 +82,7 @@
                     label="Base URL"
                     hint="Enter the Base URL"
                     required
+                    readonly
                   ></v-text-field>
 
                   <v-text-field
@@ -127,6 +128,7 @@ export default {
   },
   created() {
     var tenant = localStorage.getItem("tenant");
+    this.settings.url = "https://demo.amala.app";
     this.settings.tenant = tenant;
   },
   methods: {

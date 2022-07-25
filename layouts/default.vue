@@ -56,7 +56,7 @@
         </div>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar clipped-left hide-on-scroll flat fixed app color="primary">
+    <v-app-bar clipped-left flat fixed app color="primary">
       <v-toolbar-title>
         <v-avatar color="primary " size="36">
           <span
