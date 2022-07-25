@@ -143,8 +143,7 @@ export default {
 
     },
     icon: {
-      iconSrc: '/static/icon.png',
-      purpose: 'maskable'
+      iconSrc: '/static/icon.png'
     }
   },
 
