@@ -2,7 +2,7 @@ const type = "website";
 const url = "https://amala.co.tz";
 const title = "Amala Yangu";
 const description = "Amala Yangu web application";
-const mainImage = "https://docs.ospicx.com/preview.png";
+const mainImage = "https://amalatechnologies.github.io/ssap/preview.png";
 
 
 export default (meta) => {
