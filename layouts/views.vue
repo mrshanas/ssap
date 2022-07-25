@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <v-container fluid class="pa-0 ma-0">
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-main>
     <footer-component v-if="isMdAndUp"></footer-component>
   </v-app>

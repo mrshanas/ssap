@@ -21,13 +21,14 @@ export default function ({ $axios, redirect, store }, inject) {
 
   api.onRequest(config => {
     var token = store.getters.accessToken;
-    
+    var tenant = store.getters.tenant;
+
     api.setHeader("Access-Control-Allow-Headers", "x-access-token, Origin, Content-Type, Accept");
-    api.setHeader("Fineract-Platform-TenantId","demo")
+    api.setHeader("Fineract-Platform-TenantId", tenant.trim())
     api.setHeader("Access-Control-Allow-Origin", "*");
-    if(config.url != "authentication"){
+    if (config.url != "authentication") {
       api.setHeader("Authorization", "Basic " + token);
-     }
+    }
   });
 
   api.onError(error => {

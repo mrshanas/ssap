@@ -45,14 +45,66 @@
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item two-lin class="py-0 my-0" dense two-line>
-            <v-list-item-content>
-              <v-list-item-title>Update Endpoint</v-list-item-title>
-              <v-list-item-subtitle class="text-body-2 font-weight-normal mt-1"
-                >Click here to change your endpoint configurations
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+          <v-dialog
+            v-model="dialog"
+            transition="dialog-bottom-transition"
+            width="500"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-list-item
+                v-bind="attrs"
+                v-on="on"
+                two-lin
+                class="py-0 my-0"
+                dense
+                two-line
+              >
+                <v-list-item-content>
+                  <v-list-item-title>Update Endpoint</v-list-item-title>
+                  <v-list-item-subtitle
+                    class="text-body-2 font-weight-normal mt-1"
+                    >Click here to change your endpoint configurations
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+
+            <v-card>
+              <v-card-title class="text-h5 primary">
+                Update Endpoint
+              </v-card-title>
+
+              <v-card-text>
+                <v-form ref="form" v-model="valid" lazy-validation>
+                  <v-text-field
+                    v-model="settings.url"
+                    :rules="[(v) => !!v || 'Field is required']"
+                    label="Base URL"
+                    hint="Enter the Base URL"
+                    required
+                  ></v-text-field>
+
+                  <v-text-field
+                    v-model="settings.tenant"
+                    :rules="tenantrules"
+                    label="Tenant"
+                    hint="Enter tenant name"
+                    required
+                  ></v-text-field>
+                </v-form>
+              </v-card-text>
+
+              <v-divider></v-divider>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue lighten-1" @click="dialog = !dialog">
+                  Ignore
+                </v-btn>
+                <v-btn color="primary" @click="submit"> Save </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-list>
       </v-card>
     </v-container>
@@ -61,14 +113,30 @@
 <script>
 export default {
   layout: "views",
-  props: {
-    account: {
-      type: Object,
-      default: null,
-    },
-  },
   data() {
-    return {};
+    return {
+      dialog: false,
+      valid: true,
+      settings: {},
+      tenantrules: [
+        (v) => !!v || "Tenant is required",
+        (v) =>
+          (v && v.length >= 3) || "Name must be not less than 3 characters",
+      ],
+    };
+  },
+  created() {
+    var tenant = localStorage.getItem("tenant");
+    this.settings.tenant = tenant;
+  },
+  methods: {
+    submit: function () {
+      if (this.$refs.form.validate()) {
+        this.$store.dispatch("_updatetenant", this.settings.tenant);
+        this.dialog = false;
+        this.$forceUpdate();
+      }
+    },
   },
 };
 </script>

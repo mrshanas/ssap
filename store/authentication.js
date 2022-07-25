@@ -1,7 +1,8 @@
 const state = () => ({
   showLoader: Boolean,
   profile: {},
-  client: {}
+  client: {},
+  tenant: ''
 
 });
 
@@ -34,6 +35,9 @@ const mutations = {
     state.client = payload.pageItems[0];
     this.$router.push('/');
   },
+  ["TENANT_UPDATED"](state, payload) {
+    state.tenant = payload;
+  }
 
 }
 const actions = {
@@ -61,11 +65,14 @@ const actions = {
   },
 
   async _logoutsession({ commit }) {
-    window.localStorage.clear();
-    localStorage.removeItem('*');
+    //window.localStorage.clear();
+    localStorage.removeItem('vuex');
     sessionStorage.clear();
     this.$router.push('/signin');
   },
+  _updatetenant({ commit }, payload) {
+    commit("TENANT_UPDATED", payload);
+  }
 }
 const getters = {
   accessToken: function (state) {
@@ -80,6 +87,11 @@ const getters = {
   isAuthenticated: function (state) {
     return state.profile ? state.profile.base64EncodedAuthenticationKey != null : false;
   },
+  tenant: function (state) {
+    var _tenant = state.tenant;
+    console.log("STATE TENANT: " + _tenant)
+    return _tenant == null ? "demo" : _tenant;
+  }
 }
 
 export default {

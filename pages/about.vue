@@ -1,7 +1,6 @@
 <template>
   <v-container class="transparent fill-height" fluid>
     <v-row align="center" class="justify-center" justify="center" no-gutters>
-     
       <v-col cols="12" class="d-flex justify-space-around">
         <v-flex xs6 class="d-flex align-center justify-end flex-column">
           <div class="font-weight-black">
@@ -13,9 +12,10 @@
               href="https://amala.co.tz/products/amala-yangu/"
               target="_blank"
               >Amala yangu</a
-            > self service application
-            Copyright &copy; {{ new Date().getFullYear() }} The Apache Software
-            Foundation, Licensed under the
+            >
+            self service application Copyright &copy;
+            {{ new Date().getFullYear() }} The Apache Software Foundation,
+            Licensed under the
             <a
               href="https://www.apache.org/licenses/LICENSE-2.0"
               style="color: blue; text-decoration: underline"
@@ -38,6 +38,18 @@
               >here</a
             >
           </div>
+          <v-btn
+            class="mt-4 px-4"
+            color="primary"
+            rounded
+            small
+            @click.stop="$router.go(-1)"
+          >
+            <v-icon small dense left color="white"
+              >mdi-keyboard-backspace</v-icon
+            >
+            Click to go Back</v-btn
+          >
         </v-flex>
       </v-col>
     </v-row>

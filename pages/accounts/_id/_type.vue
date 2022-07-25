@@ -1,11 +1,9 @@
 <template>
   <v-container v-if="account == null" class="fill-height">
     <v-row align="center" justify="center" class="fill-height">
-      <v-progress-circular
-        :size="50"
-        color="primary"
-        indeterminate
-      ></v-progress-circular>
+      <v-progress-circular :size="50" color="primary" indeterminate>
+        <v-icon>mdi-cloud</v-icon>
+      </v-progress-circular>
     </v-row>
   </v-container>
   <v-card v-else color="transparent" flat>
