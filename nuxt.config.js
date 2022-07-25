@@ -118,8 +118,8 @@ export default {
     manifest: {
       name: 'Amala Yangu Web Application',
       short_name: 'Amala Yangu',
-      color_theme: "#2F4454",
-      background_color: "#2F4454",
+      color_theme: "#A0D18C",
+      background_color: "#A0D18C",
       lang: 'en',
       useWebmanifestExtension: false
     },
@@ -138,6 +138,7 @@ export default {
       ogUrl: "",
       twitterCard: "Ospic",
       twitterSite: "ospicapp",
+      mobileAppIOS: "yes"
 
 
     },
