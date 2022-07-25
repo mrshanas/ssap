@@ -125,7 +125,7 @@ export default {
     },
     meta: {
       /* meta options */
-      name: "Amala Yangu Web Application",
+      name: "Amala Yangu",
       author: "Amala",
       description: "Amala Yangu self-service Web Application",
       lang: "en",
@@ -133,11 +133,11 @@ export default {
       ogSiteName: "Amala Yangu",
       ogTitle: "Amala Yangu Web Application",
       ogDescription: "Amala Yangu self-service Web Application",
-      ogHost: "https://app.ospicx.com/",
-      ogImage: "https://docs.ospicx.com/preview.png",
+      ogHost: "https://amala.co.tz",
+      ogImage: "https://amalatechnologies.github.io/ssap/preview.png",
       ogUrl: "",
-      twitterCard: "Ospic",
-      twitterSite: "ospicapp",
+      twitterCard: "Amala Yangu",
+      twitterSite: "amalaApp",
       mobileAppIOS: "yes"
 
 
