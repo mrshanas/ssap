@@ -15,7 +15,7 @@
         <v-card
           elevation="0"
           color="primary"
-           v-if="profile"
+          v-if="profile"
           class="mx-auto"
           min-height="150"
           tile
@@ -24,9 +24,11 @@
             <v-list-item-content class="mt-8">
               <v-list-item-title class="text-h6">
                 <v-avatar color="primary darken-2" size="62">
-                  <span v-if="profile.displayName" class="white--text text-h5">{{
-                    profile.displayName.charAt(0)
-                  }}</span></v-avatar
+                  <span
+                    v-if="profile.displayName"
+                    class="white--text text-h5"
+                    >{{ profile.displayName.charAt(0) }}</span
+                  ></v-avatar
                 >
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-bold white--text">{{
@@ -48,9 +50,9 @@
                 class="ml-1 mr-2"
               ></v-icon>
               {{ $t(setting.title) }}
-              <v-divider v-if="index == 6" class="mt-5"></v-divider>
             </v-list-item-title>
           </v-list-item>
+          <v-divider v-if="index == 6" class="py-2"></v-divider>
         </div>
       </v-list>
     </v-navigation-drawer>
