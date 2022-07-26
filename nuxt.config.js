@@ -30,8 +30,6 @@ export default {
     meta: [
       ...meta,
       { charset: 'utf-8' },
-      /**Chrome, Firefox OS and Opera **/
-      { name: "theme-color", content: "#A0D18C" },
       /**Windows phone **/
       { name: "msapplication-navbutton-color", content: "#A0D18C" },
       /**iOS Safari**/
@@ -39,7 +37,7 @@ export default {
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
       { hid: 'description', name: 'description', content: 'Amala Yangu self-service Web Application' },
-      { name: "google-site-verification", content: "cx99OlrotJDjh6FbXnZFs4lRdaqQ7ksY-SadPjv2CLQ" },
+
       //Twitter meta-data
       { hid: "twitter:site", name: "twitter:site", content: "AmalaApp" },
       { hid: "twitter:card", name: "twitter:card", content: "summary_large_image" },
@@ -139,13 +137,13 @@ export default {
       twitterCard: "Amala Yangu",
       twitterSite: "amalaApp",
       mobileAppIOS: "yes",
-      appleStatusBarStyle: "black-translucent"
+      appleStatusBarStyle: "black-translucent",
+      theme_color: "#A0D18C"
 
 
     },
     icon: {
-      iconSrc: '/static/icon.png',
-      purpose: ['maskable']
+      iconSrc: '/static/maskable.png'
     }
   },
 
