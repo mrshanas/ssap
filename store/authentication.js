@@ -37,6 +37,7 @@ const mutations = {
   },
   ["TENANT_UPDATED"](state, payload) {
     state.tenant = payload;
+    localStorage.setItem('tenant', payload)
   }
 
 }
@@ -66,7 +67,7 @@ const actions = {
 
   async _logoutsession({ commit }) {
     //window.localStorage.clear();
-    localStorage.removeItem('vuex');
+    window.localStorage.removeItem('vuex');
     sessionStorage.clear();
     this.$router.push('/signin');
   },

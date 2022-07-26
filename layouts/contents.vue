@@ -13,7 +13,7 @@
     >
       <v-list nav subheader tile class="mt-0 pa-0 py-0">
         <v-card
-         v-if="profile"
+          v-if="profile"
           elevation="0"
           color="primary"
           class="mx-auto"
@@ -24,9 +24,11 @@
             <v-list-item-content class="mt-8">
               <v-list-item-title class="text-h6">
                 <v-avatar color="primary darken-2" size="62">
-                  <span v-if="profile.displayName" class="white--text text-h5">{{
-                    profile.displayName.charAt(0)
-                  }}</span></v-avatar
+                  <span
+                    v-if="profile.displayName"
+                    class="white--text text-h5"
+                    >{{ profile.displayName.charAt(0) }}</span
+                  ></v-avatar
                 >
               </v-list-item-title>
               <v-list-item-subtitle class="font-weight-bold white--text">{{
@@ -37,7 +39,7 @@
         </v-card>
 
         <div v-for="(setting, index) in settings" :key="index">
-          <v-list-item :to="setting.to">
+          <v-list-item @click="navigateToHere(setting.to)">
             <v-list-item-title class="font-weight-light">
               <v-icon
                 slot="prependIcon"

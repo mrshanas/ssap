@@ -39,7 +39,7 @@
         </v-card>
 
         <div v-for="(setting, index) in settings" :key="index">
-          <v-list-item :to="setting.to">
+          <v-list-item @click="navigateToHere(setting.to)">
             <v-list-item-title class="font-weight-light">
               <v-icon
                 slot="prependIcon"

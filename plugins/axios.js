@@ -21,7 +21,8 @@ export default function ({ $axios, redirect, store }, inject) {
 
   api.onRequest(config => {
     var token = store.getters.accessToken;
-    var tenant = store.getters.tenant;
+    var _tenant = localStorage.getItem('tenant');
+    var tenant = _tenant == null ? "demo" : _tenant;
 
     api.setHeader("Access-Control-Allow-Headers", "x-access-token, Origin, Content-Type, Accept");
     api.setHeader("Fineract-Platform-TenantId", tenant.trim())
