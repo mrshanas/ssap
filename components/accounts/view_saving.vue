@@ -84,7 +84,7 @@
                 <v-list-item-subtitle
                   class="text-body-2 font-weight-normal mt-1"
                 >
-                  {{ account.lastActiveTransactionDate }}
+                  {{ account.lastActiveTransactionDate | dateformat }}
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>

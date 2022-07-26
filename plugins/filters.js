@@ -17,3 +17,8 @@ Vue.filter('dateformat', function (value) {
   const date_string = value[2] + "-" + value[1] + "-" + value[0];
   return new Date(date_string).toDateString();
 })
+Vue.filter('simpledateformat', function (value) {
+  if (!value) return ''
+  const date_string = value[2] + "-" + value[1] + "-" + value[0];
+  return date_string;
+})

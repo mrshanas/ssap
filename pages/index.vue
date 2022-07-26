@@ -132,7 +132,7 @@
             <v-col class="d-flex flex-column align-center">
               <v-btn
                 class="mb-0 mt-4"
-                to="/accounts"
+                to="/accounts/apply"
                 x-large
                 fab
                 elevation="1"
@@ -241,7 +241,7 @@ export default {
     }),
   },
   created() {
-    //this.$store.dispatch("retrieve_profile");
+    this.$store.dispatch("selfserviceclient");
   },
 };
 </script>
