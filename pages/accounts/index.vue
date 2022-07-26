@@ -123,6 +123,20 @@
               </v-list-item-group>
             </v-list>
           </v-container>
+          <v-fab-transition>
+            <v-btn
+              fab
+              large
+              color="primary"
+              fixed
+              bottom
+              right
+              to="/accounts/apply"
+              class="v-btn--example"
+            >
+              <v-icon>mdi-plus</v-icon>
+            </v-btn>
+          </v-fab-transition>
         </v-card>
       </v-tab-item>
       <v-tab-item>
