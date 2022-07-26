@@ -20,7 +20,7 @@
           <v-tab
             v-for="item in items"
             :key="item"
-            class="text-uppercase text-h6"
+            class="text-uppercase font-weight-bold"
           >
             {{ item }}
           </v-tab>

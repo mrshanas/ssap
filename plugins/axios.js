@@ -20,7 +20,7 @@ export default function ({ $axios, redirect, store }, inject) {
   });
 
   api.onRequest(config => {
-    var token = store.getters.accessToken;
+    var token = localStorage.getItem('accessToken')
     var _tenant = localStorage.getItem('tenant');
     var tenant = _tenant == null ? "demo" : _tenant;
 

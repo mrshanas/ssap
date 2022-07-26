@@ -19,6 +19,7 @@ const mutations = {
   ["AUTHENTICATE_SUCCESS"](state, payload) {
     state.showLoader = false;
     state.profile = payload;
+    window.localStorage.setItem('accessToken', payload.base64EncodedAuthenticationKey)
   },
 
   ["GET_CLIENT"](state) {
@@ -68,6 +69,7 @@ const actions = {
   async _logoutsession({ commit }) {
     //window.localStorage.clear();
     window.localStorage.removeItem('vuex');
+    window.localStorage.removeItem('accessToken');
     sessionStorage.clear();
     this.$router.push('/signin');
   },
