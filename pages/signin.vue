@@ -92,7 +92,7 @@ export default {
     show3: false,
     show4: false,
     payload:{
-       password: "password",
+       password: "Password1!",
        username: "selfservice",
     },
     image:"https://vicsguide.com/wp-content/uploads/2021/07/Best-loan-apps.jpg",
