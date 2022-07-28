@@ -12,5 +12,5 @@ To start working on Amala yangu web application follow this instructions:-
 -  Open the cloned directory from your terminal  `cd {YOUR CLONED DIRECTORY} e.g cd ssap`
 - Install the dependencies `npm install`
 - Run `npm run dev`
-- Open `http://localhost:8000` in your browser
+- Open http://localhost:8000 in your browser
 -
