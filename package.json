@@ -5,7 +5,8 @@
   "description": "Amala Self service webb app",
   "scripts": {
     "dev": "NODE_ENV=dev nuxt",
-    "build": "NODE_ENV=dev nuxt build",
+    "builddev": "NODE_ENV=dev nuxt build",
+    "build": "nuxt build",
     "start": "NODE_ENV=production nuxt start",
     "devi": "backpack dev",
     "production": "DEPLOY_ENV=prod nuxt build",
