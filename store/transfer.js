@@ -27,7 +27,6 @@ const actions = {
     await this.$api
       .get("accounttransfers/template")
       .then((response) => {
-        console.log(response);
         commit("GET_TRANSFER_ACCOUNTS_SUCCESS", response.data);
       })
       .catch((error) => {

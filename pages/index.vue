@@ -220,14 +220,14 @@ export default {
     };
   },
   methods: {},
+  created() {
+    this.$store.dispatch("selfserviceclient");
+    this.$store.dispatch("_getaccounts", this.clientId);
+  },
   mounted: function () {
     if (!this.authenticated) {
       this.$store.dispatch("_logoutsession");
     }
-  },
-
-  created() {
-    this.$store.dispatch("_getaccounts", this.clientId);
   },
 
   computed: {
@@ -237,9 +237,6 @@ export default {
       loanbalance: "totalLoanBalance",
       savingbalance: "totalSavingBalance",
     }),
-  },
-  created() {
-    this.$store.dispatch("selfserviceclient");
   },
 };
 </script>
