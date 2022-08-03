@@ -14,7 +14,14 @@
               hide-details
             ></v-text-field
           ></v-card-title>
-          <v-data-table :headers="headers" :items="charges" :search="search">
+          <v-data-table
+            :headers="styledHeaders"
+            :items="charges"
+            :search="search"
+            mobile-breakpoint="mobileBreakPoint"
+            hide-default-footer
+            :custom-filter="getSearchData"
+          >
             <template v-slot:item.status="{ item }">
               <v-chip :color="getColor(item.status)">{{ item.status }}</v-chip>
             </template>
@@ -31,7 +38,12 @@ export default {
   data: () => ({
     search: "",
     headers: [
-      { text: "Status", align: "start", filterable: true, value: "status" },
+      {
+        text: "Status",
+        align: "start",
+        filterable: true,
+        value: "status",
+      },
       { text: "Name", align: "start", filterable: false, value: "name" },
       {
         text: "Due As Of",
@@ -52,9 +64,11 @@ export default {
   }),
   created() {
     this.$store.dispatch("_getcharges", this.clientId);
-    console.table(this.charges);
   },
   computed: {
+    styledHeaders() {
+      return this.headers.map((item) => ({ ...item, ["class"]: "primary" }));
+    },
     ...mapGetters({
       charges: "charges",
     }),
@@ -63,6 +77,7 @@ export default {
     getColor(status) {
       return status === "Paid" ? "green" : "orange";
     },
+    getSearchData: (value, search, item) => value == item.status,
   },
 };
 </script>

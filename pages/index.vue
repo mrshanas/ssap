@@ -45,17 +45,7 @@
       <v-col cols="5" sm="5" class="d-flex justify-center">
         <div class="pt-2">
           <p
-            class="
-              d-flex
-              red--text
-              justify-center
-              align-bottom
-              pa-0
-              ma-0
-              mt-2
-              text-h6
-              font-weight-bold
-            "
+            class="d-flex red--text justify-center align-bottom pa-0 ma-0 mt-2 text-h6 font-weight-bold"
           >
             10,404,123
           </p>
@@ -68,17 +58,7 @@
       <v-col cols="5" sm="5" class="d-flex justify-start">
         <div class="pt-2">
           <p
-            class="
-              d-flex
-              red--text
-              justify-center
-              align-bottom
-              pa-0
-              ma-0
-              mt-2
-              text-h6
-              font-weight-bold
-            "
+            class="d-flex red--text justify-center align-bottom pa-0 ma-0 mt-2 text-h6 font-weight-bold"
           >
             10,404,123
           </p>
@@ -173,7 +153,7 @@
             <v-col class="d-flex flex-column align-center">
               <v-btn
                 class="mb-0 mt-4"
-                to="/accounts"
+                to="/charges"
                 x-large
                 fab
                 elevation="1"
