@@ -181,7 +181,6 @@ export default {
       this.$store.dispatch("_getloanapplicationtemplate", this.clientId);
     },
     async productchange() {
-      console.log(this.loanapplication.productId);
       await this.$api
         .$get("loans/template", {
           params: {

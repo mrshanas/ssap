@@ -93,12 +93,6 @@ export default {
     nativateToHere(id) {
       this.$router.push('/' + id);
     },
-  },
- beforeMount() {
-    console.log(this.$store.getters.isLoggedIn);
-    if (this.$store.getters.isLoggedIn) {
-      this.$router.push("/");
-    }
   }
 };
 </script>

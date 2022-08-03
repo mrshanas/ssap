@@ -60,11 +60,7 @@ export default function ({ $axios, redirect, store }, inject) {
 
   // Set baseURL to something different
   // eslint-disable-next-line no-console
-  console.log(
-    process.env.NODE_ENV === "production"
-      ? process.env.baseUrl
-      : process.env.localUrl
-  );
+ 
   /** For UI developers with no local API **/
   /* api.setBaseURL(  process.env.baseUrl ); */
 

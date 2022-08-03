@@ -216,7 +216,6 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      username: "Abasi Abasi Mwinyimkuu",
       accountvisible: true,
     };
   },
@@ -228,7 +227,6 @@ export default {
   },
 
   created() {
-    console.log(this.loanbalance);
     this.$store.dispatch("_getaccounts", this.clientId);
   },
 
