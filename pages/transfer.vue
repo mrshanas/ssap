@@ -1,11 +1,12 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <!-- <v-row align="center" justify="center" class="fill-height">
       <p>Under development</p>
     </v-row> -->
-    <v-card style="width: 60%; margin: 0 auto; padding: 2%">
-      <v-card-title class="text-h3">Third Party Transfer</v-card-title>
-      <v-form>
+    <v-card style="width: 90%; margin: 0 auto; padding: 2%">
+      <v-card-title class="text-h4" fluid>Third Party Transfer</v-card-title>
+
+      <v-form class="pa-5">
         <v-row>
           <v-col class="d-flex" cols="12">
             <v-select
@@ -51,12 +52,12 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12">
+          <v-col cols="12" class="d-flex">
             <v-btn
               :rounded="lg"
               color="primary"
               type="reset"
-              style="margin-right: 10%"
+              style="margin-right: 3%"
               >RESET</v-btn
             >
             <!-- <v-spacer></v-spacer> -->
@@ -100,7 +101,7 @@
         </v-row>
       </v-form>
     </v-card>
-    <template>
+    <!-- <template>
       <v-container class="d-flex align-center justify-space-between px-3 py-5">
         <p class="pt-3">Contact Us</p>
         <div>
@@ -108,7 +109,7 @@
           <p>info@amala.co.tz</p>
         </div>
       </v-container>
-    </template>
+    </template> -->
   </v-container>
 </template>
 
