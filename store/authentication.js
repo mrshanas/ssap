@@ -73,7 +73,7 @@ const actions = {
   async _logoutsession({ commit }) {
     //window.localStorage.clear();
     window.localStorage.removeItem("vuex");
-    window.localStorage.removeItem("accessToken");
+    //window.localStorage.removeItem("accessToken");
     sessionStorage.clear();
     this.$router.push("/signin");
   },
@@ -83,7 +83,7 @@ const actions = {
 };
 const getters = {
   accessToken: function (state) {
-    return state.profile ? state.profile.base64EncodedAuthenticationKey : null;
+    return window.localStorage.getItem("accessToken");
   },
   clientId: function (state) {
     return state.client.id;
@@ -95,15 +95,14 @@ const getters = {
     return state.profile;
   },
   isAuthenticated: function (state) {
-    return state.profile
-      ? state.profile.base64EncodedAuthenticationKey != null
-      : false;
+    return window.localStorage.getItem("accessToken") == null ? false : true;
   },
   tenant: function (state) {
     var _tenant = state.tenant;
     console.log("STATE TENANT: " + _tenant);
     return _tenant == null ? "demo" : _tenant;
   },
+
 };
 
 export default {

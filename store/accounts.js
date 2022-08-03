@@ -3,7 +3,7 @@ const state = () => ({
   savingsAccounts: [],
   guaratorAccounts: [],
   shareAccounts: [],
-  loanAccounts: []
+  loanAccounts: [],
 });
 
 const mutations = {
@@ -51,6 +51,17 @@ const getters = {
   },
   shareaccounts: function (state) {
     return state.shareAccounts;
+  },
+
+  totalLoanBalance: function (state) {
+    return state.loanAccounts.filter(e => e.loanBalance != undefined).reduce(function (accumulator, b) {
+      return accumulator + b.loanBalance
+    }, 0)
+  },
+  totalSavingBalance: function (state) {
+    return state.savingsAccounts.filter(e => e.accountBalance != undefined).reduce(function (accumulator, b) {
+      return accumulator + b.accountBalance
+    }, 0)
   }
 }
 

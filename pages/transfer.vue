@@ -3,8 +3,8 @@
     <!-- <v-row align="center" justify="center" class="fill-height">
       <p>Under development</p>
     </v-row> -->
-    <v-card style="width: 90%; margin: 0 auto; padding: 2%">
-      <v-card-title class="text-h4" fluid>Third Party Transfer</v-card-title>
+    <v-card flat>
+      <v-card-title class="text-h4">Third Party Transfer</v-card-title>
 
       <v-form class="pa-5">
         <v-row>
@@ -54,7 +54,6 @@
 
           <v-col cols="12" class="d-flex">
             <v-btn
-              :rounded="lg"
               color="primary"
               type="reset"
               style="margin-right: 3%"
@@ -64,7 +63,6 @@
             <v-dialog v-model="dialog" persistent max-width="250">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                  :rounded="lg"
                   color="warning"
                   dark
                   v-bind="attrs"
@@ -87,13 +85,16 @@
                   <p>{{ selected.transferDescription }}</p>
                 </v-card-text>
                 <v-card-actions>
-                  <v-btn color="red accent-1" @click="dialog = false">
-                    CANCEL
-                  </v-btn>
-                  <v-spacer></v-spacer>
-                  <v-btn color="green" type="submit" @click="submitForm">
-                    TRANSFER NOW
-                  </v-btn>
+                  <v-row>
+                    <v-spacer></v-spacer>
+                    <v-btn color="red accent-1" @click="dialog = false">
+                      CANCEL
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green" type="submit" @click="submitForm">
+                      TRANSFER NOW
+                    </v-btn>
+                  </v-row>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -101,15 +102,6 @@
         </v-row>
       </v-form>
     </v-card>
-    <!-- <template>
-      <v-container class="d-flex align-center justify-space-between px-3 py-5">
-        <p class="pt-3">Contact Us</p>
-        <div>
-          <p class="pa-0 ma-0">+255 737 789 207</p>
-          <p>info@amala.co.tz</p>
-        </div>
-      </v-container>
-    </template> -->
   </v-container>
 </template>
 

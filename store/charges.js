@@ -25,7 +25,6 @@ const actions = {
     await this.$api
       .get(`clients/${clientId}/charges`)
       .then((response) => {
-        response.data.pageItems.forEach((el) => console.table(el));
         commit("GET_CHARGES_SUCCESS", response);
       })
       .catch((err) => {

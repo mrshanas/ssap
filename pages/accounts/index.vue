@@ -67,7 +67,7 @@
                           "
                         >
                           {{ account.currency.code }}
-                          {{ currencyFormat(account.accountBalance) }}
+                          {{ account.accountBalance | currency }}
                         </p>
                       </v-list-item-action>
                     </template>
@@ -198,7 +198,6 @@ export default {
     };
   },
   created() {
-    console.log(this.clientId);
     this.$store.dispatch("_getaccounts", this.clientId);
   },
   computed: {

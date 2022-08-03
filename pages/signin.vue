@@ -78,6 +78,7 @@
 </template>
 
 <script lang="js">
+import { mapGetters } from "vuex"
 export default {
   meta: {
     auth: {
@@ -113,11 +114,16 @@ export default {
       this.$router.push('/' + id);
     },
   },
- beforeMount() {
-    console.log(this.$store.getters.isAuthenticated);
-    if (this.$store.getters.isAuthenticated) {
+
+  beforeMount() {
+    if (!this.isAuthenticated) {
       this.$router.push("/");
     }
+  },
+  computed: {
+    ...mapGetters({
+      isAuthenticated: "isAuthenticated"
+    })
   }
 };
 </script>

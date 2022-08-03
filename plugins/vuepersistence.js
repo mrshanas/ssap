@@ -6,13 +6,12 @@ export default ({ store }) => {
   window.onNuxtReady(() => {
     createPersistedState({
       paths: [
-        "authentication", "accounts"],
-      /**storage: {
+        "authentication", "accounts", "charges"],
+      storage: {
         getItem: key => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
         removeItem: key => ls.remove(key)
       }
-      **/
     })(store);
   });
 };

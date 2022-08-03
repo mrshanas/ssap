@@ -72,7 +72,6 @@
 
       <v-menu
         max-width="500"
-        position-x="center"
         offset-y
         v-if="notificationnumber > 0"
         content-class="elevation-1 mt-4 badge"
@@ -132,16 +131,17 @@
     <v-main>
       <nuxt />
     </v-main>
+    <footer-component> </footer-component>
   </v-app>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import FooterComponent from "@/components/HFooter.vue";
 export default {
-  async fetch({ store, params }) {
-    // await this.$store.dispatch("getProfile");
+  components: {
+    "footer-component": FooterComponent,
   },
-  components: {},
   data() {
     return {
       clipped: false,
@@ -292,7 +292,7 @@ export default {
           break;
 
         case 2:
-          this.logoutsession();
+          this.$store.dispatch("_logoutsession");
           break;
       }
     },

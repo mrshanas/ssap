@@ -45,9 +45,20 @@
       <v-col cols="5" sm="5" class="d-flex justify-center">
         <div class="pt-2">
           <p
-            class="d-flex red--text justify-center align-bottom pa-0 ma-0 mt-2 text-h6 font-weight-bold"
+            class="
+              d-flex
+              red--text
+              justify-center
+              align-bottom
+              pa-0
+              ma-0
+              mt-2
+              text-h6
+              font-weight-bold
+            "
+            v-if="savingbalance"
           >
-            10,404,123
+            {{ savingbalance | currency }}
           </p>
           <p class="d-flex pa-0 ma-0 justify-center align-top">Total Savings</p>
         </div>
@@ -58,9 +69,20 @@
       <v-col cols="5" sm="5" class="d-flex justify-start">
         <div class="pt-2">
           <p
-            class="d-flex red--text justify-center align-bottom pa-0 ma-0 mt-2 text-h6 font-weight-bold"
+            class="
+              d-flex
+              red--text
+              justify-center
+              align-bottom
+              pa-0
+              ma-0
+              mt-2
+              text-h6
+              font-weight-bold
+            "
+            v-if="loanbalance"
           >
-            10,404,123
+            {{ loanbalance | currency }}
           </p>
           <p class="d-flex pa-0 ma-0 justify-center align-top">Total Loans</p>
         </div>
@@ -205,12 +227,17 @@ export default {
     }
   },
 
-  created() {},
+  created() {
+    console.log(this.loanbalance);
+    this.$store.dispatch("_getaccounts", this.clientId);
+  },
 
   computed: {
     ...mapGetters({
       authenticated: "isAuthenticated",
       profile: "client",
+      loanbalance: "totalLoanBalance",
+      savingbalance: "totalSavingBalance",
     }),
   },
   created() {

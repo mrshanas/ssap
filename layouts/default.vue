@@ -72,7 +72,6 @@
 
       <v-menu
         max-width="500"
-        position-x="center"
         offset-y
         v-if="notificationnumber > 0"
         content-class="elevation-1 mt-4 badge"
@@ -132,27 +131,19 @@
     <v-main>
       <v-container style="background-color: white" class="ma-0 pa-0" fluid>
         <nuxt />
-        <v-container
-          class="d-flex align-center justify-space-between px-3 py-5"
-        >
-          <p class="pt-3">Contact Us</p>
-          <div>
-            <p class="pa-0 ma-0">+255 737 789 207</p>
-            <p>info@amala.co.tz</p>
-          </div>
-        </v-container>
       </v-container>
     </v-main>
+    <footer-component> </footer-component>
   </v-app>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import FooterComponent from "@/components/HFooter.vue";
 export default {
-  async fetch({ store, params }) {
-    // await this.$store.dispatch("getProfile");
+  components: {
+    "footer-component": FooterComponent,
   },
-  components: {},
   data() {
     return {
       clipped: false,

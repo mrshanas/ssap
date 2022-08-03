@@ -2,23 +2,25 @@
   <v-container fluid class="fill-height">
     <v-row align="center" justify="center" class="fill-height">
       <v-col cols="12">
-        <v-card>
+        <v-card flat>
           <v-card-title
             ><h3>Charges</h3>
             <v-spacer></v-spacer>
             <v-text-field
               v-model="search"
               append-icon="mdi-magnify"
-              label="Search"
+              hint="Search..."
+              placeholder="Search . . ."
               single-line
               hide-details
+              outlined
             ></v-text-field
           ></v-card-title>
           <v-data-table
             :headers="styledHeaders"
             :items="charges"
             :search="search"
-            mobile-breakpoint="mobileBreakPoint"
+            :mobile-breakpoint="mobileBreakPoint"
             hide-default-footer
             :custom-filter="getSearchData"
           >
@@ -36,7 +38,7 @@
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
-    search: "",
+    search: null,
     headers: [
       {
         text: "Status",
