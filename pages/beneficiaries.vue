@@ -22,7 +22,7 @@
       <v-dialog v-model="dialog" width="700">
 
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" fab dark small absolute bottom right v-bind="attrs" v-on="on"
+          <v-btn color="primary" fab dark absolute bottom right v-bind="attrs" v-on="on"
             @click="$store.dispatch('_getbeneficiaryaccounttypetemplate')">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
@@ -34,7 +34,7 @@
           </v-card-title>
 
           <template>
-            <v-form ref="form" v-model="valid" lazy-validation>
+            <v-form ref="form" v-model="valid" lazy-validation class="pa-md-4 mx-lg-auto">
               <v-col class="d-flex" cols="12">
                 <v-select v-model="beneficiary.accountType" :items="accounttype" item-value="id" item-text="value"
                   :rules="[v => !!v || 'Item is required']" label="Account Type" required>
