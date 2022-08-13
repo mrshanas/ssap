@@ -48,7 +48,7 @@
           border="left"
           colored-border
           :color="charge.isPaid ? 'black' : 'primary'"
-          elevation="2"
+          elevation="1"
         >
           <v-row dense>
             <v-col class="font-weight-bold" cols="8"> {{ charge.name }}</v-col>
