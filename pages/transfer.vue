@@ -1,11 +1,6 @@
 <template>
   <v-container fluid>
-    <!-- <v-row align="center" justify="center" class="fill-height">
-      <p>Under development</p>
-    </v-row> -->
     <v-card flat>
-      <v-card-title class="text-h4">Third Party Transfer</v-card-title>
-
       <v-form class="pa-5">
         <v-row>
           <v-col class="d-flex" cols="12">
@@ -53,48 +48,66 @@
           </v-col>
 
           <v-col cols="12" class="d-flex">
-            <v-btn
-              color="primary"
-              type="reset"
-              style="margin-right: 3%"
+            <v-btn color="primary" type="reset" style="margin-right: 3%"
               >RESET</v-btn
             >
             <!-- <v-spacer></v-spacer> -->
-            <v-dialog v-model="dialog" persistent max-width="250">
+            <v-dialog v-model="dialog" persistent class="pa-3">
               <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  color="warning"
-                  dark
-                  v-bind="attrs"
-                  v-on="on"
+                <v-btn color="warning" dark v-bind="attrs" v-on="on"
                   >REVIEW TRANSFER</v-btn
                 >
               </template>
-              <v-card auto-grow>
-                <v-card-title class="text-h5">REVIEW TRANSFER</v-card-title>
-                <v-card-text>
-                  <h2>Transfer To:</h2>
-                  <p>Account No: {{ selected.toAccountId }}</p>
-                  <h2>Transfer From:</h2>
-                  <p>Account No: {{ selected.fromAccountId }}</p>
-                  <h2>Amount:</h2>
-                  <p>{{ selected.transferAmount }}</p>
-                  <h2>Transfer Date:</h2>
-                  <p>{{ selected.transferDate }}</p>
-                  <h2>Remarks:</h2>
-                  <p>{{ selected.transferDescription }}</p>
+              <v-card flat auto-grow>
+                <v-toolbar
+                  elevation="0"
+                  color="primary"
+                  dark
+                  class="font-weight-bold"
+                  >Review transfer</v-toolbar
+                >
+                <v-card-text class="mt-2">
+                  <v-row dense>
+                    <v-col cols="7">
+                      <p class="font-weight-bold">Transfer To:</p>
+                    </v-col>
+                    <v-col cols="5">
+                      Account No: {{ selected.toAccountId }}
+                    </v-col>
+                    <v-col cols="7">
+                      <p class="font-weight-bold">Transfer From:</p>
+                    </v-col>
+                    <v-col cols="5">
+                      <p>Account No: {{ selected.fromAccountId }}</p>
+                    </v-col>
+                    <v-col cols="7">
+                      <p class="font-weight-bold">Amount:</p>
+                    </v-col>
+                    <v-col cols="5">
+                      <p>{{ selected.transferAmount }}</p>
+                    </v-col>
+                    <v-col cols="7">
+                      <p class="font-weight-bold">Transfer Date:</p>
+                    </v-col>
+                    <v-col cols="5">
+                      <p>{{ selected.transferDate }}</p>
+                    </v-col>
+                    <v-col cols="7">
+                      <p class="font-weight-bold">Remarks:</p>
+                    </v-col>
+                    <v-col cols="5">
+                      <p>{{ selected.transferDescription }}</p>
+                    </v-col>
+                  </v-row>
                 </v-card-text>
                 <v-card-actions>
-                  <v-row>
-                    <v-spacer></v-spacer>
-                    <v-btn color="red accent-1" @click="dialog = false">
-                      CANCEL
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn color="green" type="submit" @click="submitForm">
-                      TRANSFER NOW
-                    </v-btn>
-                  </v-row>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" @click="dialog = false">
+                    CANCEL
+                  </v-btn>
+                  <v-btn color="warning" type="submit" @click="submitForm">
+                    Transfer Now
+                  </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
