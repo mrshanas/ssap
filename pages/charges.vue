@@ -1,6 +1,13 @@
 <template>
-  <v-container fluid class="fill-height">
+  <v-container v-if="charges == null" class="fill-height">
     <v-row align="center" justify="center" class="fill-height">
+      <v-progress-circular :size="50" color="primary" indeterminate>
+        <v-icon>mdi-cloud</v-icon>
+      </v-progress-circular>
+    </v-row>
+  </v-container>
+  <v-container v-else>
+    <!---<v-row align="center" justify="center" class="fill-height">
       <v-col cols="12">
         <v-card flat>
           <v-card-title
@@ -30,7 +37,47 @@
           </v-data-table>
         </v-card>
       </v-col>
-    </v-row>
+    </v-row>-->
+    <v-list three-line>
+      <v-list-item
+        class="ma-0 pa-0"
+        v-for="(charge, index) in charges"
+        :key="index"
+      >
+        <v-alert
+          border="left"
+          colored-border
+          :color="charge.isPaid ? 'black' : 'primary'"
+          elevation="2"
+        >
+          <v-row dense>
+            <v-col class="font-weight-bold" cols="8"> {{ charge.name }}</v-col>
+            <v-col cols="4" class="d-flex justify-start">{{
+              charge.dueDate | simpledateformat
+            }}</v-col>
+            <v-col class="font-weight-bold" cols="8"> Due:</v-col>
+            <v-col cols="4" class="d-flex justify-start"
+              >{{ charge.currency.code }} {{ charge.amount | currency }}</v-col
+            >
+            <v-col class="font-weight-bold" cols="8"> Paid:</v-col>
+            <v-col cols="4" class="d-flex justify-start"
+              >{{ charge.currency.code }}
+              {{ charge.amountPaid | currency }}</v-col
+            >
+            <v-col class="font-weight-bold" cols="8"> Waved:</v-col>
+            <v-col cols="4" class="d-flex justify-start"
+              >{{ charge.currency.code }}
+              {{ charge.amountWaived | currency }}</v-col
+            >
+            <v-col class="font-weight-bold" cols="8"> Outstanding:</v-col>
+            <v-col cols="4" class="d-flex justify-start"
+              >{{ charge.currency.code }}
+              {{ charge.amountOutstanding | currency }}</v-col
+            >
+          </v-row>
+        </v-alert>
+      </v-list-item>
+    </v-list>
   </v-container>
 </template>
 

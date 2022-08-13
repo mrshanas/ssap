@@ -1,6 +1,6 @@
 const state = () => ({
   showLoader: Boolean,
-  charges: [],
+  charges: null,
 });
 
 const mutations = {
@@ -36,16 +36,7 @@ const actions = {
 
 const getters = {
   charges: function (state) {
-    // console.log(state.charges);
-    return state.charges.map((charge) => ({
-      status: charge.isPaid ? "Paid" : "Not paid",
-      name: charge.name,
-      dueAsOf: charge.dueDate,
-      due: charge.amount,
-      paid: charge.amountPaid,
-      waived: charge.amountWaived,
-      outstanding: charge.amountOutstanding,
-    }));
+    return state.charges
   },
 };
 
