@@ -191,14 +191,7 @@
         <v-col cols="4" class="ma-0 pa-0">
           <v-row no-gutters class="d-flex justify-center">
             <v-col class="d-flex flex-column align-center">
-              <v-btn
-                class="mb-0 mt-4"
-                to="/accounts"
-                x-large
-                fab
-                elevation="1"
-                color="white"
-              >
+              <v-btn class="mb-0 mt-4" x-large fab elevation="1" color="white">
                 <v-icon dark> mdi-clipboard-text </v-icon>
               </v-btn>
               <p class="mt-2">Surveys</p>
