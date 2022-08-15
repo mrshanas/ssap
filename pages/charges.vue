@@ -7,37 +7,6 @@
     </v-row>
   </v-container>
   <v-container v-else>
-    <!---<v-row align="center" justify="center" class="fill-height">
-      <v-col cols="12">
-        <v-card flat>
-          <v-card-title
-            ><h3>Charges</h3>
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              hint="Search..."
-              placeholder="Search . . ."
-              single-line
-              hide-details
-              outlined
-            ></v-text-field
-          ></v-card-title>
-          <v-data-table
-            :headers="styledHeaders"
-            :items="charges"
-            :search="search"
-            :mobile-breakpoint="mobileBreakPoint"
-            hide-default-footer
-            :custom-filter="getSearchData"
-          >
-            <template v-slot:item.status="{ item }">
-              <v-chip :color="getColor(item.status)">{{ item.status }}</v-chip>
-            </template>
-          </v-data-table>
-        </v-card>
-      </v-col>
-    </v-row>-->
     <v-list three-line>
       <v-list-item
         class="ma-0 pa-0"
@@ -47,7 +16,7 @@
         <v-alert
           border="left"
           colored-border
-          :color="charge.isPaid ? 'black' : 'primary'"
+          :color="charge.isPaid || charge.isWaived ? 'black' : 'deposit'"
           elevation="1"
         >
           <v-row dense>
