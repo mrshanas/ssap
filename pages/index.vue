@@ -45,17 +45,7 @@
       <v-col cols="5" sm="5" class="d-flex justify-center">
         <div class="pt-2">
           <p
-            class="
-              d-flex
-              red--text
-              justify-center
-              align-bottom
-              pa-0
-              ma-0
-              mt-2
-              text-h6
-              font-weight-bold
-            "
+            class="d-flex red--text justify-center align-bottom pa-0 ma-0 mt-2 text-h6 font-weight-bold"
             v-if="savingbalance"
           >
             {{ savingbalance | currency }}
@@ -69,17 +59,7 @@
       <v-col cols="5" sm="5" class="d-flex justify-start">
         <div class="pt-2">
           <p
-            class="
-              d-flex
-              red--text
-              justify-center
-              align-bottom
-              pa-0
-              ma-0
-              mt-2
-              text-h6
-              font-weight-bold
-            "
+            class="d-flex red--text justify-center align-bottom pa-0 ma-0 mt-2 text-h6 font-weight-bold"
             v-if="loanbalance"
           >
             {{ loanbalance | currency }}
@@ -87,6 +67,47 @@
           <p class="d-flex pa-0 ma-0 justify-center align-top">Total Loans</p>
         </div>
       </v-col>
+      <!-- Pie charts start -->
+      <v-col md="4" cols="12" class="d-flex justify-center">
+        <v-card>
+          <v-card-title>
+            <h3>Loan Accounts</h3>
+            <v-spacer></v-spacer>
+            <p>Total: {{ loan.length }}</p>
+          </v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <PieChart :stats="loanAcc.data" :labels="loanAcc.labels" />
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col md="4" cols="12" class="d-flex justify-center">
+        <v-card class="mx-auto">
+          <v-card-title>
+            <h3>Savings Accounts</h3>
+            <v-spacer></v-spacer>
+            <p>Total: {{ saving.length }}</p>
+          </v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <PieChart :stats="savingAcc.data" :labels="savingAcc.labels" />
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col md="4" cols="12" class="d-flex justify-center">
+        <v-card class="mx-auto">
+          <v-card-title>
+            <h3>Share Accounts</h3>
+            <v-spacer></v-spacer>
+            <p>Total: {{ share.length }}</p>
+          </v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <PieChart :stats="shareAcc.data" :labels="shareAcc.labels" />
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <!-- Pie charts ends -->
     </v-row>
     <v-card elevation="0" color="primary darken-1" class="py-5 mt-3" tile>
       <v-row no-gutters>
@@ -213,13 +234,25 @@
 
 <script>
 import { mapGetters } from "vuex";
+import PieChart from "~/components/PieChart.vue";
+
 export default {
   data() {
     return {
       accountvisible: true,
     };
   },
-  methods: {},
+  methods: {
+    visualizeAcc(account) {
+      return account.reduce((previousAcc, currentAcc) => {
+        if (!previousAcc[currentAcc.status.value]) {
+          previousAcc[currentAcc.status.value] = 0;
+        }
+        previousAcc[currentAcc.status.value] += 1;
+        return previousAcc;
+      }, {});
+    },
+  },
   created() {
     this.$store.dispatch("selfserviceclient");
     this.$store.dispatch("_getaccounts", this.clientId);
@@ -229,14 +262,41 @@ export default {
       this.$store.dispatch("_logoutsession");
     }
   },
-
   computed: {
     ...mapGetters({
       authenticated: "isAuthenticated",
       profile: "client",
       loanbalance: "totalLoanBalance",
       savingbalance: "totalSavingBalance",
+      saving: "savingaccounts",
+      loan: "loanaccounts",
+      share: "shareaccounts",
     }),
+    loanAcc() {
+      let res = {
+        labels: [],
+        data: [],
+      };
+      res.labels = Object.getOwnPropertyNames(this.visualizeAcc(this.loan));
+      res.data = Object.values(this.visualizeAcc(this.loan));
+      console.log(res);
+      return res;
+    },
+    savingAcc() {
+      let res = {};
+      res["labels"] = Object.getOwnPropertyNames(
+        this.visualizeAcc(this.saving)
+      );
+      res["data"] = Object.values(this.visualizeAcc(this.saving));
+      return res;
+    },
+    shareAcc() {
+      let res = {};
+      res["labels"] = Object.getOwnPropertyNames(this.visualizeAcc(this.share));
+      res["data"] = Object.values(this.visualizeAcc(this.share));
+      return res;
+    },
   },
+  components: { PieChart },
 };
 </script>

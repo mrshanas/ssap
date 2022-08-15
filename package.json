@@ -25,6 +25,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "^3.3.1",
     "bulma": "^0.9.4",
+    "chart.js": "^3.9.1",
     "cookie-universal-nuxt": "^2.2.1",
     "core-js": "^3.23.5",
     "fibers": "^5.0.1",
@@ -32,6 +33,7 @@
     "nuxt-material-design-icons": "^1.0.4",
     "secure-ls": "^1.2.6",
     "sweetalert": "^2.1.2",
+    "vue-chartjs": "^4.1.1",
     "vue-i18n": "^8.26.5",
     "vuetify": "^2.6.7",
     "vuex-persistedstate": "^3.2.0"
