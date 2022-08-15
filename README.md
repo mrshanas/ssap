@@ -1,4 +1,4 @@
-## Amala Yangu Web self service application
+## Amala Yangu Web self service application [![Builds](https://github.com/amalatechnologies/ssap/actions/workflows/webapp.js.yml/badge.svg)](https://github.com/amalatechnologies/ssap/actions/workflows/webapp.js.yml)
 
 Amala yangu web self service application is a web version of [amala yangu mobile application](https://play.google.com/store/apps/details?id=org.mifos.amalayangu), as self service mobile application for Microfinance users to access their accounts informations (i.e Loan accounts, Share and Saving accounts).
 
