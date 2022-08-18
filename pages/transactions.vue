@@ -9,76 +9,56 @@
 
   <v-container v-else>
     <v-list three-line>
-      <v-list-item
-        class="ma-0 pa-0"
-        v-for="(transaction, index) in transactions"
-        :key="index"
-      >
-        <v-alert
-          border="left"
-          colored-border
-          :color="transaction.isPaid || transaction.isWaived ? 'black' : 'deposit'"
-          elevation="1"
-        >
+      <v-list-item class="ma-0 pa-0" v-for="(transaction, index) in transactions" :key="index">
+        <v-alert border="left" colored-border :color="transaction.isPaid || transaction.isWaived ? 'black' : 'deposit'"
+          elevation="1">
           <v-row dense>
             <v-col class="font-weight-bold" cols="8"> {{ transaction.name }}</v-col>
             <v-col cols="4" class="d-flex justify-start">{{
-              transaction.dueDate | simpledateformat
+                transaction.dueDate | simpledateformat
             }}</v-col>
             <v-col class="font-weight-bold" cols="8"> Due:</v-col>
-            <v-col cols="4" class="d-flex justify-start"
-              >{{ transaction.currency.code }} {{ transaction.amount | currency }}</v-col
-            >
+            <v-col cols="4" class="d-flex justify-start">{{ transaction.currency.code }} {{ transaction.amount |
+                currency
+            }}</v-col>
             <v-col class="font-weight-bold" cols="8"> Paid:</v-col>
-            <v-col cols="4" class="d-flex justify-start"
-              >{{ transaction.currency.code }}
-              {{ transaction.amountPaid | currency }}</v-col
-            >
+            <v-col cols="4" class="d-flex justify-start">{{ transaction.currency.code }}
+              {{ transaction.amountPaid | currency }}</v-col>
             <v-col class="font-weight-bold" cols="8"> Waved:</v-col>
-            <v-col cols="4" class="d-flex justify-start"
-              >{{ transaction.currency.code }}
-              {{ transaction.amountWaived | currency }}</v-col
-            >
+            <v-col cols="4" class="d-flex justify-start">{{ transaction.currency.code }}
+              {{ transaction.amountWaived | currency }}</v-col>
             <v-col class="font-weight-bold" cols="8"> Outstanding:</v-col>
-            <v-col cols="4" class="d-flex justify-start"
-              >{{ transaction.currency.code }}
-              {{ transaction.amountOutstanding | currency }}</v-col
-            >
+            <v-col cols="4" class="d-flex justify-start">{{ transaction.currency.code }}
+              {{ transaction.amountOutstanding | currency }}</v-col>
           </v-row>
         </v-alert>
       </v-list-item>
     </v-list>
-     </v-container>
+  </v-container>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
-   data: () => ({
+  data: () => ({
     search: null,
     headers: [
       {
-        text: "Status",
+        text: "ID",
         align: "start",
         filterable: true,
         value: "status",
       },
-      { text: "Name", align: "start", filterable: false, value: "name" },
+      { text: "Type", align: "start", filterable: false, value: "name" },
       {
-        text: "Due As Of",
+        text: "OfficeName",
         align: "start",
         filterable: false,
         value: "dueAsOf",
       },
-      { text: "Due", align: "start", filterable: false, value: "due" },
-      { text: "Paid", align: "start", filterable: false, value: "paid" },
-      { text: "Waived", align: "start", filterable: false, value: "waived" },
-      {
-        text: "Outstanding Balance",
-        align: "start",
-        filterable: false,
-        value: "outstanding",
-      },
+      { text: "Amount", align: "start", filterable: false, value: "due" },
+      { text: "Date", align: "start", filterable: false, value: "paid" },
+
     ],
   }),
   created() {

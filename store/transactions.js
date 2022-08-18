@@ -9,24 +9,13 @@ const mutations = {
   },
   ["GET_TRANSACTIONS_SUCCESS"](state, payload) {
     state.showLoader = false;
-    state.charges = payload.data.pageItems;
+    state.transactions = payload.data.pageItems;
   },
   ["GET_TRANSACTIONS_FAIL"](state) {
     state.showLoader = false;
   },
   ["GET_TRANSACTIONS_ERROR"](state) {
     state.showLoader = false;
-  },
-  ["GET_ACCOUNTS_TYPE_FAILED"](state) {
-    state.showLoader = false;
-  },
-  ["GET_ACCOUNTS_TYPE_ERROR"](state) {
-    state.showLoader = false;
-  },
-  ["GET_ACCOUNTS_TYPE_SUCCESS"](state, payload) {
-    state.showLoader = false;
-    state.transactionaccounttype = payload.accountTypeOptions;
-
   },
 };
 
@@ -52,6 +41,7 @@ const getters = {
   transactionaccounttype: function (state) {
     return state.tansactionaccounttype
   }
+
 };
 
 export default {
