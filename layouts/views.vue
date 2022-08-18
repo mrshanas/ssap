@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main style="background-color: white">
       <nuxt />
     </v-main>
     <footer-component v-if="isMdAndUp"></footer-component>

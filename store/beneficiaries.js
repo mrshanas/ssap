@@ -10,7 +10,7 @@ const mutations = {
   },
   ["GET_BENEFICIARIES_SUCCESS"](state, payload) {
     state.showLoader = false;
-    state.beneficiaries = payload;
+    state.beneficiaries = payload.data;
   },
   ["GET_BENEFICIARIES_FAIL"](state) {
     state.showLoader = false;
@@ -37,8 +37,7 @@ const mutations = {
 const actions = {
   async _getbeneficiaries({ commit }) {
     commit("GET_BENEFICIARIES");
-    await this.$api
-      .get(`beneficiaries/tpt`)
+    await this.$api.get(`beneficiaries/tpt`)
       .then((response) => {
 
         commit("GET_BENEFICIARIES_SUCCESS", response);
@@ -82,6 +81,9 @@ const getters = {
   },
   beneficiaryaccounttype: function (state) {
     return state.beneficiaryaccounttype
+  },
+  beneficiary: (state) => (beneficiaryId) => {
+    return state.beneficiaries.find(x => x.id == beneficiaryId)
   }
 };
 
