@@ -12,12 +12,10 @@
         </v-avatar>
       </v-toolbar-title>
       <v-toolbar-title class="white--text">
-        &nbsp; &nbsp; Settings</v-toolbar-title
+        &nbsp; &nbsp; Beneficiary details</v-toolbar-title
       >
     </v-toolbar>
     <v-container class="pa-4">
-      <p class="text-h5">Beneficiary details</p>
-
       <v-row>
         <v-col class="font-weight-bold" cols="8"> Beneficiary Name</v-col>
         <v-col cols="4" class="d-flex justify-start">{{
