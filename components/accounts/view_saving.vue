@@ -66,11 +66,17 @@
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item>
-            <v-list-item-content> </v-list-item-content>
-            <v-list-item-action>
-              <v-btn class="text-capitalize" color="primary">Deposit</v-btn>
-            </v-list-item-action>
+          <v-list-item class="pr-5">
+            <v-row>
+              <v-spacer></v-spacer>
+
+              <v-btn class="text-capitalize mr-3" color="primary"
+                >Deposit</v-btn
+              >
+              <v-btn class="text-capitalize" color="primary"
+                >Make Transfer</v-btn
+              >
+            </v-row>
           </v-list-item>
         </v-list>
       </v-card>
