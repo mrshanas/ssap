@@ -72,7 +72,7 @@ export default {
     async getloanaccountdetails() {
       await this.$api
         .$get(`loans/${this.$route.params.id}`, {
-          params: { associations: "repaymentSchedule,transactions" },
+          params: { associations: "repaymentSchedule,transactions,charges" },
         })
         .then((response) => {
           this.account = response;
