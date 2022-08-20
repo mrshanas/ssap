@@ -1,7 +1,7 @@
 <template>
   <v-container class="ma-0 pa-0" fluid>
     <v-container fluid class="ma-0 pa-0">
-      <v-card tile>
+      <v-card v-if="details" tile>
         <v-list dense>
           <v-list-item two-lin class="py-0 my-0" dense two-line>
             <v-list-item-content>
@@ -86,10 +86,15 @@
           </v-container>
         </v-list>
       </v-card>
-      <p class="pa-3">Monitor</p>
-      <v-card>
+      <p v-if="details" class="pa-3">Monitor</p>
+      <v-card v-if="details">
         <v-list>
-          <v-list-item dense two-line class="py-0 my-0">
+          <v-list-item
+            @click="details = !details"
+            dense
+            two-line
+            class="py-0 my-0"
+          >
             <v-list-item-avatar color="grey lighten-3">
               <v-icon color="primary" dark> mdi-swap-horizontal </v-icon>
             </v-list-item-avatar>
@@ -100,7 +105,12 @@
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item dense two-line class="py-0 my-0">
+          <v-list-item
+            @click="(details = !details), (tab = 1)"
+            dense
+            two-line
+            class="py-0 my-0"
+          >
             <v-list-item-avatar color="grey lighten-3">
               <v-icon color="primary" dark>mdi-currency-rub </v-icon>
             </v-list-item-avatar>
@@ -113,11 +123,48 @@
           </v-list-item>
         </v-list>
       </v-card>
+      <v-card v-else tile flat>
+        <v-toolbar color="primary" dark flat>
+          <v-toolbar-title>Account Details</v-toolbar-title>
+          <v-spacer> </v-spacer>
+          <v-btn @click="details = !details" icon
+            ><v-icon>mdi-eye-off</v-icon></v-btn
+          >
+          <template v-slot:extension>
+            <v-tabs grow v-model="tab" align-with-title>
+              <v-tabs-slider color="blue"></v-tabs-slider>
+
+              <v-tab v-for="item in items" :key="item">
+                {{ item }}
+              </v-tab>
+            </v-tabs>
+          </template>
+        </v-toolbar>
+
+        <v-tabs-items v-model="tab">
+          <v-tab-item>
+            <purchased-shares-component
+              :purchasedShares="account.purchasedShares"
+            ></purchased-shares-component>
+          </v-tab-item>
+          <v-tab-item>
+            <share-dividend-component
+              :dividends="account.dividends"
+            ></share-dividend-component>
+          </v-tab-item>
+        </v-tabs-items>
+      </v-card>
     </v-container>
   </v-container>
 </template>
 <script>
+import PurchasedSharesComponent from "@/components/share/purchased_shares.vue";
+import ShareDividendsComponent from "@/components/share/share_dividends.vue";
 export default {
+  components: {
+    "purchased-shares-component": PurchasedSharesComponent,
+    "share-dividend-component": ShareDividendsComponent,
+  },
   props: {
     account: {
       type: Object,
@@ -125,7 +172,12 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      details: true,
+      tab: null,
+      selected: null,
+      items: ["Purchased share transactions", "Dividends"],
+    };
   },
 };
 </script>
