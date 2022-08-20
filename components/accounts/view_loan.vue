@@ -3,7 +3,13 @@
     <v-container fluid class="ma-0 pa-0">
       <v-card tile>
         <v-list dense>
-          <v-list-item two-lin class="py-0 my-0" dense two-line>
+          <v-list-item
+            v-if="account.summary"
+            two-lin
+            class="py-0 my-0"
+            dense
+            two-line
+          >
             <v-list-item-content>
               <v-list-item-title>Outstanding Balance</v-list-item-title>
               <v-list-item-subtitle class="text-body-2 font-weight-normal mt-1"
@@ -85,7 +91,7 @@
               <v-icon color="primary" dark>mdi-currency-rub </v-icon>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title>Savings Charges</v-list-item-title>
+              <v-list-item-title>Loan Charges</v-list-item-title>
               <v-list-item-subtitle class="mt-1">
                 View Charges
               </v-list-item-subtitle>

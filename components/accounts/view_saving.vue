@@ -1,7 +1,7 @@
 <template>
   <v-container class="ma-0 pa-0" fluid>
     <v-container fluid class="ma-0 pa-0">
-      <v-card tile>
+      <v-card v-if="details" tile>
         <v-list dense>
           <v-list-item two-lin class="py-0 my-0" dense two-line>
             <v-list-item-content>
@@ -238,7 +238,17 @@
               </v-list>
             </v-card>
           </v-tab-item>
-          <v-tab-item> </v-tab-item>
+          <v-tab-item>
+            <v-list three-line>
+              <v-list-item
+                class="ma-0 pa-0"
+                v-for="(charge, index) in account.charges"
+                :key="index"
+              >
+                <charge-component :charge="charge"></charge-component>
+              </v-list-item>
+            </v-list>
+          </v-tab-item>
           <v-tab-item>
             <v-card>
               <v-container class="fill-height">
@@ -254,7 +264,11 @@
   </v-container>
 </template>
 <script>
+import ComponentCharge from "~/components/charges/saving_charges.vue";
 export default {
+  components: {
+    "charge-component": ComponentCharge,
+  },
   props: {
     account: {
       type: Object,
