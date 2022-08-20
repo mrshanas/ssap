@@ -279,6 +279,7 @@ export default {
     return {
       details: true,
       tab: null,
+      selected: null,
       items: ["Transactions", "Charges", "QR Code"],
     };
   },

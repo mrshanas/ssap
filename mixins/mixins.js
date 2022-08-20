@@ -1,7 +1,11 @@
 import Vue from "vue";
 import { mapGetters } from "vuex";
+import LoanChargeComponent from "@/components/charges/loan_charges.vue"
 Vue.mixin({
   layout: "default",
+  components: {
+    'loan-charge-component': LoanChargeComponent
+  },
   data: function () {
     return {
       mobileBreakPoint: 200,
